@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/Home.css">
+    <script src="/scripts/jquery-3.1.1.min.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <h1>Projet Mementis </h1>
+    <div id="body">
+
+        @using (Html.BeginForm("Simulation", "Home"))
+        {
+            <table>
+                <tr>
+                    <th>Sélectionnez la date courante</th>
+                    <th>Sélectionnez la fréquence de rebalancement de la couverture</th>
+                    <th>Sélectionnez le type de données du passé</th>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input name="currentDate" id="currentDateIn" oninput="currentDateOut.value = currentDateIn.value"
+                               type="range" value="4" min="0" max="8" > <br/>
+                        <output name="currentDate" id="currentDateOut">4</output>
+                    </td>
+                    <td align="center">
+                        Annuelle : @Html.RadioButton("nbHedgingDate", true, new { @checked = true })
+                        <br />
+                        <br />
+                        Semestrielle :@Html.RadioButton("nbHedgingDate", false)
+                    </td>
+                    <td align="center">
+                        Historique : @Html.RadioButton("isHistorical", true, new { @checked = true })
+                        <br />
+                        <br />
+                        Générées :@Html.RadioButton("isHistorical", false)
+                    </td>
+                </tr>
+                <tr>
+                    <td id="launch" colspan=3 align="center">
+                        Lancer une simulation :
+                        <input type="submit" name="command" value="PriceAndHedge" />
+                        <input type="submit" name="command" value="PnL" /> 
+                        <input type="submit" name="command" value="Mini-Test-Web" />
+                    </td>
+                </tr>
+            </table>
+        }
+
+    </div>
+</body>
+</html>

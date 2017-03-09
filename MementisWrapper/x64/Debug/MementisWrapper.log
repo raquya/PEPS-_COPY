@@ -1,0 +1,9 @@
+﻿  Stdafx.cpp
+  AssemblyInfo.cpp
+  MementisWrapper.cpp
+MementisWrapper.cpp(19): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+MementisWrapper.cpp(74): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  Génération de code en cours...
+  .NETFramework,Version=v4.5.AssemblyAttributes.cpp
+     CrÚation de la bibliothÞque C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisWrapper.lib et de l'objet C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisWrapper.exp
+  MementisWrapper.vcxproj -> C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisWrapper.dll

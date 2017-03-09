@@ -1,0 +1,69 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/PriceAndHedge.css">
+    <title>PriceAndHedge</title>
+</head>
+<body>
+    <div>
+        Vous avez lancé un pricing avec couverture avec les paramètres suivants :<br />
+        <ul>
+            <li>Date de début : <span style="color:red">@ViewData["startDate"]</span></li>
+            <li>Date de fin : <span style="color:red">@ViewData["endDate"]</span></li>
+            <li>Date courante : <span style="color:red">@ViewData["currentDate"]</span></li>
+            <li>Type de données du passé : <span style="color:red">@ViewData["dataPastType"]</span></li>
+        </ul>
+
+        Voici les résultats obtenus :<br />
+        <ul>
+            <li>Prix du produit à la date courante : <span style="color:red">@ViewData["prix"]</span></li>
+            <li>Interval de confiance du prix du produit à la date courante : <span style="color:red">@ViewData["icPrix"]</span></li>
+        </ul>
+
+        <br />
+        <br />
+
+        @{
+            var nomActions = ViewData["nomActions"] as string[];
+            var delta = ViewData["delta"] as double[];
+            var icDelta = ViewData["icDelta"] as double[];
+        }
+
+        <table style="width:40%">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid black">Action</th>
+                    <th style="border: 1px solid black">Delta</th>
+                    <th style="border: 1px solid black">icDelta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < @ViewBag.nbPdtCouv; i++)
+                {
+                    <tr>
+                        <td>@nomActions[i]</td>
+                        <td>@delta[i]</td>
+                        <td>@icDelta[i]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <br />
+        <br />
+
+        <button type="button" id="Home" onclick="location.href='@Url.Action("Main", "Home")'">Home</button>
+
+        <br />
+        <br />
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+        <!--
+        Lancer simulation :
+        @{
+            var nextDate = @ViewData["currentDate"] as string;
+        }
+
+        <button type="button" id="Simulation" style="width: 50px; height: 20px;" onclick="location.href='@Url.Action("Simulation", "Home",
+            new { currentDate = @currentDate, isHistorical = @isHistorical })'">
+         -->

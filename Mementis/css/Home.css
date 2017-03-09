@@ -1,0 +1,33 @@
+﻿h1 {
+    font-family : 'Calibri';
+    color : white;
+    background-color : black;
+    padding-left : 1%;
+    margin-top: 0;
+}
+
+#body {
+    padding-left : 10%;
+    padding-top : 3%;
+}
+
+p {
+    font-weight: bold;
+}
+
+input[name="command"]  {
+    width: 110px;
+    height: 30px;
+}
+
+table {
+    width : 100%;
+}
+
+th {
+    padding: 10px 10px 10px 10px;
+}
+
+#launch {
+    padding-top : 150px;
+}

@@ -1,0 +1,319 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 56.51      1.48     1.48 33150000     0.04     0.04  FlowCalculator::performanceComparedToEntryPoint(int, _PnlMat const*, int, _PnlVect*, double)
+ 23.29      2.09     0.61 33150000     0.02     0.02  FlowCalculator::performanceInTheYear(int, _PnlMat const*, int, _PnlVect*)
+  6.11      2.25     0.16  2550000     0.06     0.90  OptionMementis::payoff(_PnlMat const*)
+  4.96      2.38     0.13    50000     2.60     2.85  BlackScholesModel::asset(_PnlMat*, double, double, int, _PnlRng*, _PnlMat const*)
+  3.05      2.46     0.08    50000     1.60     2.20  BlackScholesModel::asset(_PnlMat*, double, int, _PnlRng*)
+  1.53      2.50     0.04 48150002     0.00     0.00  ConstantRateModel::integrateRate(double, double)
+  1.15      2.53     0.03 15000000     0.00     0.00  ConstantRateModel::getRate(double)
+  1.15      2.56     0.03  2500000     0.01     0.01  BlackScholesModel::shiftAsset(_PnlMat*, _PnlMat const*, int, double, double, double)
+  0.76      2.58     0.02 33150000     0.00     0.00  FlowCalculator::dividende(int, _PnlMat const*, int, _PnlVect*, _PnlVect*)
+  0.76      2.60     0.02                             FlowCalculator::~FlowCalculator()
+  0.76      2.62     0.02                             OptionMementis::~OptionMementis()
+  0.00      2.62     0.00  2550000     0.00     0.00  FlowCalculator::performanceAtEntryPoint(_PnlMat const*, int, _PnlVect*)
+  0.00      2.62     0.00       32     0.00     0.00  TypeVal::TypeVal(TypeVal const&)
+  0.00      2.62     0.00       21     0.00     0.00  boost::detail::variant::destroyer::result_type boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::internal_apply_visitor<boost::detail::variant::destroyer>(boost::detail::variant::destroyer&)
+  0.00      2.62     0.00       16     0.00     0.00  Parser::add(char*)
+  0.00      2.62     0.00       16     0.00     0.00  TypeVal::operator=(TypeVal const&)
+  0.00      2.62     0.00       16     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >, std::string const&)
+  0.00      2.62     0.00       15     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::find(std::string const&) const
+  0.00      2.62     0.00       10     0.00     0.00  Param::check_if_key(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >&, std::string const&) const
+  0.00      2.62     0.00        5     0.00     0.00  void boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::assign<std::vector<double, std::allocator<double> > >(std::vector<double, std::allocator<double> > const&)
+  0.00      2.62     0.00        5     0.00     0.00  std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&)
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN10MonteCarloC2Ev
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN11AsianOptionC2Ev
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN12BSParametersC2EiP9RateModeldP8_PnlVectS3_S3_i
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN12BasketOptionC2Ev
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN14FlowCalculatorC2Ed
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN14OptionMementisC2Ev
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN17BlackScholesModelC2Ev
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZNK7TypeVal5printERKSs
+  0.00      2.62     0.00        1     0.00     0.00  _GLOBAL__sub_I_main
+  0.00      2.62     0.00        1     0.00     0.00  Parser::ReadInputFile(char const*)
+  0.00      2.62     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_unique_pos(std::string const&)
+  0.00      2.62     0.00        1     0.00     0.00  std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, TypeVal> >*)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+ 
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this 
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.38% of 2.62 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     92.6    0.00    2.43                 MonteCarlo::delta(_PnlMat const*, double, _PnlVect*) [1]
+                0.16    2.10 2500000/2550000     OptionMementis::payoff(_PnlMat const*) [2]
+                0.13    0.01   50000/50000       BlackScholesModel::asset(_PnlMat*, double, double, int, _PnlRng*, _PnlMat const*) [6]
+                0.03    0.00 2500000/2500000     BlackScholesModel::shiftAsset(_PnlMat*, _PnlMat const*, int, double, double, double) [10]
+                0.00    0.00       1/48150002     ConstantRateModel::integrateRate(double, double) [8]
+-----------------------------------------------
+                0.00    0.04   50000/2550000     MonteCarlo::price(double&, double&) [5]
+                0.16    2.10 2500000/2550000     MonteCarlo::delta(_PnlMat const*, double, _PnlVect*) [1]
+[2]     87.7    0.16    2.14 2550000         OptionMementis::payoff(_PnlMat const*) [2]
+                1.48    0.00 33150000/33150000     FlowCalculator::performanceComparedToEntryPoint(int, _PnlMat const*, int, _PnlVect*, double) [3]
+                0.61    0.00 33150000/33150000     FlowCalculator::performanceInTheYear(int, _PnlMat const*, int, _PnlVect*) [4]
+                0.03    0.00 33150000/48150002     ConstantRateModel::integrateRate(double, double) [8]
+                0.02    0.00 33150000/33150000     FlowCalculator::dividende(int, _PnlMat const*, int, _PnlVect*, _PnlVect*) [11]
+                0.00    0.00 2550000/2550000     FlowCalculator::performanceAtEntryPoint(_PnlMat const*, int, _PnlVect*) [21]
+-----------------------------------------------
+                1.48    0.00 33150000/33150000     OptionMementis::payoff(_PnlMat const*) [2]
+[3]     56.5    1.48    0.00 33150000         FlowCalculator::performanceComparedToEntryPoint(int, _PnlMat const*, int, _PnlVect*, double) [3]
+-----------------------------------------------
+                0.61    0.00 33150000/33150000     OptionMementis::payoff(_PnlMat const*) [2]
+[4]     23.3    0.61    0.00 33150000         FlowCalculator::performanceInTheYear(int, _PnlMat const*, int, _PnlVect*) [4]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      5.9    0.00    0.16                 MonteCarlo::price(double&, double&) [5]
+                0.08    0.03   50000/50000       BlackScholesModel::asset(_PnlMat*, double, int, _PnlRng*) [7]
+                0.00    0.04   50000/2550000     OptionMementis::payoff(_PnlMat const*) [2]
+                0.00    0.00       1/48150002     ConstantRateModel::integrateRate(double, double) [8]
+-----------------------------------------------
+                0.13    0.01   50000/50000       MonteCarlo::delta(_PnlMat const*, double, _PnlVect*) [1]
+[6]      5.4    0.13    0.01   50000         BlackScholesModel::asset(_PnlMat*, double, double, int, _PnlRng*, _PnlMat const*) [6]
+                0.01    0.00 15000000/48150002     ConstantRateModel::integrateRate(double, double) [8]
+-----------------------------------------------
+                0.08    0.03   50000/50000       MonteCarlo::price(double&, double&) [5]
+[7]      4.2    0.08    0.03   50000         BlackScholesModel::asset(_PnlMat*, double, int, _PnlRng*) [7]
+                0.03    0.00 15000000/15000000     ConstantRateModel::getRate(double) [9]
+-----------------------------------------------
+                0.00    0.00       1/48150002     MonteCarlo::price(double&, double&) [5]
+                0.00    0.00       1/48150002     MonteCarlo::delta(_PnlMat const*, double, _PnlVect*) [1]
+                0.01    0.00 15000000/48150002     BlackScholesModel::asset(_PnlMat*, double, double, int, _PnlRng*, _PnlMat const*) [6]
+                0.03    0.00 33150000/48150002     OptionMementis::payoff(_PnlMat const*) [2]
+[8]      1.5    0.04    0.00 48150002         ConstantRateModel::integrateRate(double, double) [8]
+-----------------------------------------------
+                0.03    0.00 15000000/15000000     BlackScholesModel::asset(_PnlMat*, double, int, _PnlRng*) [7]
+[9]      1.1    0.03    0.00 15000000         ConstantRateModel::getRate(double) [9]
+-----------------------------------------------
+                0.03    0.00 2500000/2500000     MonteCarlo::delta(_PnlMat const*, double, _PnlVect*) [1]
+[10]     1.1    0.03    0.00 2500000         BlackScholesModel::shiftAsset(_PnlMat*, _PnlMat const*, int, double, double, double) [10]
+-----------------------------------------------
+                0.02    0.00 33150000/33150000     OptionMementis::payoff(_PnlMat const*) [2]
+[11]     0.8    0.02    0.00 33150000         FlowCalculator::dividende(int, _PnlMat const*, int, _PnlVect*, _PnlVect*) [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     0.8    0.02    0.00                 FlowCalculator::~FlowCalculator() [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     0.8    0.02    0.00                 OptionMementis::~OptionMementis() [13]
+-----------------------------------------------
+                0.00    0.00 2550000/2550000     OptionMementis::payoff(_PnlMat const*) [2]
+[21]     0.0    0.00    0.00 2550000         FlowCalculator::performanceAtEntryPoint(_PnlMat const*, int, _PnlVect*) [21]
+-----------------------------------------------
+                0.00    0.00      32/32          Parser::add(char*) [24]
+[22]     0.0    0.00    0.00      32         TypeVal::TypeVal(TypeVal const&) [22]
+-----------------------------------------------
+                0.00    0.00       8/21          Parser::add(char*) [24]
+                0.00    0.00      13/21          TypeVal::operator=(TypeVal const&) [25]
+[23]     0.0    0.00    0.00      21         boost::detail::variant::destroyer::result_type boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::internal_apply_visitor<boost::detail::variant::destroyer>(boost::detail::variant::destroyer&) [23]
+-----------------------------------------------
+                0.00    0.00      16/16          Parser::ReadInputFile(char const*) [40]
+[24]     0.0    0.00    0.00      16         Parser::add(char*) [24]
+                0.00    0.00      32/32          TypeVal::TypeVal(TypeVal const&) [22]
+                0.00    0.00      16/16          TypeVal::operator=(TypeVal const&) [25]
+                0.00    0.00      16/16          std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >, std::string const&) [26]
+                0.00    0.00       8/21          boost::detail::variant::destroyer::result_type boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::internal_apply_visitor<boost::detail::variant::destroyer>(boost::detail::variant::destroyer&) [23]
+                0.00    0.00       5/5           void boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::assign<std::vector<double, std::allocator<double> > >(std::vector<double, std::allocator<double> > const&) [29]
+-----------------------------------------------
+                0.00    0.00      16/16          Parser::add(char*) [24]
+[25]     0.0    0.00    0.00      16         TypeVal::operator=(TypeVal const&) [25]
+                0.00    0.00      13/21          boost::detail::variant::destroyer::result_type boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::internal_apply_visitor<boost::detail::variant::destroyer>(boost::detail::variant::destroyer&) [23]
+-----------------------------------------------
+                0.00    0.00      16/16          Parser::add(char*) [24]
+[26]     0.0    0.00    0.00      16         std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >, std::string const&) [26]
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_unique_pos(std::string const&) [41]
+-----------------------------------------------
+                0.00    0.00       5/15          Param::extract(std::string const&, _PnlVect*&, int, bool) const [92]
+                0.00    0.00      10/15          Param::check_if_key(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >&, std::string const&) const [28]
+[27]     0.0    0.00    0.00      15         std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::find(std::string const&) const [27]
+-----------------------------------------------
+                0.00    0.00       1/10          bool Param::extract<std::string>(std::string const&, std::string&, bool) const [93]
+                0.00    0.00       1/10          bool Param::extract<unsigned long>(std::string const&, unsigned long&, bool) const [96]
+                0.00    0.00       3/10          bool Param::extract<int>(std::string const&, int&, bool) const [95]
+                0.00    0.00       5/10          bool Param::extract<double>(std::string const&, double&, bool) const [94]
+[28]     0.0    0.00    0.00      10         Param::check_if_key(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >&, std::string const&) const [28]
+                0.00    0.00      10/15          std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::find(std::string const&) const [27]
+-----------------------------------------------
+                0.00    0.00       5/5           Parser::add(char*) [24]
+[29]     0.0    0.00    0.00       5         void boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::assign<std::vector<double, std::allocator<double> > >(std::vector<double, std::allocator<double> > const&) [29]
+-----------------------------------------------
+                0.00    0.00       5/5           Param::extract(std::string const&, _PnlVect*&, int, bool) const [92]
+[30]     0.0    0.00    0.00       5         std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&) [30]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[31]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN10MonteCarloC2Ev [31]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[32]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN11AsianOptionC2Ev [32]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[33]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN12BSParametersC2EiP9RateModeldP8_PnlVectS3_S3_i [33]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[34]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN12BasketOptionC2Ev [34]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[35]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN14FlowCalculatorC2Ed [35]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[36]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN14OptionMementisC2Ev [36]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[37]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN17BlackScholesModelC2Ev [37]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[38]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZNK7TypeVal5printERKSs [38]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [107]
+[39]     0.0    0.00    0.00       1         _GLOBAL__sub_I_main [39]
+-----------------------------------------------
+                0.00    0.00       1/1           Parser::Parser(char const*) [88]
+[40]     0.0    0.00    0.00       1         Parser::ReadInputFile(char const*) [40]
+                0.00    0.00      16/16          Parser::add(char*) [24]
+-----------------------------------------------
+                0.00    0.00       1/1           std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >, std::string const&) [26]
+[41]     0.0    0.00    0.00       1         std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_unique_pos(std::string const&) [41]
+-----------------------------------------------
+                                  16             std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, TypeVal> >*) [42]
+                0.00    0.00       1/1           Param::~Param() [83]
+[42]     0.0    0.00    0.00       1+16      std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, TypeVal> >*) [42]
+                                  16             std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, TypeVal> >*) [42]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [31] _GLOBAL__sub_I__ZN10MonteCarloC2Ev [3] FlowCalculator::performanceComparedToEntryPoint(int, _PnlMat const*, int, _PnlVect*, double) [29] void boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::assign<std::vector<double, std::allocator<double> > >(std::vector<double, std::allocator<double> > const&)
+  [32] _GLOBAL__sub_I__ZN11AsianOptionC2Ev [11] FlowCalculator::dividende(int, _PnlMat const*, int, _PnlVect*, _PnlVect*) [40] Parser::ReadInputFile(char const*)
+  [33] _GLOBAL__sub_I__ZN12BSParametersC2EiP9RateModeldP8_PnlVectS3_S3_i [12] FlowCalculator::~FlowCalculator() [24] Parser::add(char*)
+  [34] _GLOBAL__sub_I__ZN12BasketOptionC2Ev [2] OptionMementis::payoff(_PnlMat const*) [22] TypeVal::TypeVal(TypeVal const&)
+  [35] _GLOBAL__sub_I__ZN14FlowCalculatorC2Ed [13] OptionMementis::~OptionMementis() [25] TypeVal::operator=(TypeVal const&)
+  [36] _GLOBAL__sub_I__ZN14OptionMementisC2Ev [10] BlackScholesModel::shiftAsset(_PnlMat*, _PnlMat const*, int, double, double, double) [28] Param::check_if_key(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >&, std::string const&) const
+  [37] _GLOBAL__sub_I__ZN17BlackScholesModelC2Ev [6] BlackScholesModel::asset(_PnlMat*, double, double, int, _PnlRng*, _PnlMat const*) [27] std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::find(std::string const&) const
+  [38] _GLOBAL__sub_I__ZNK7TypeVal5printERKSs [7] BlackScholesModel::asset(_PnlMat*, double, int, _PnlRng*) [30] std::vector<double, std::allocator<double> >::operator=(std::vector<double, std::allocator<double> > const&)
+  [39] _GLOBAL__sub_I_main     [8] ConstantRateModel::integrateRate(double, double) [41] std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_unique_pos(std::string const&)
+   [4] FlowCalculator::performanceInTheYear(int, _PnlMat const*, int, _PnlVect*) [9] ConstantRateModel::getRate(double) [26] std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_get_insert_hint_unique_pos(std::_Rb_tree_const_iterator<std::pair<std::string const, TypeVal> >, std::string const&)
+  [21] FlowCalculator::performanceAtEntryPoint(_PnlMat const*, int, _PnlVect*) [23] boost::detail::variant::destroyer::result_type boost::variant<int, unsigned long, double, std::vector<double, std::allocator<double> >, std::string, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_, boost::detail::variant::void_>::internal_apply_visitor<boost::detail::variant::destroyer>(boost::detail::variant::destroyer&) [42] std::_Rb_tree<std::string, std::pair<std::string const, TypeVal>, std::_Select1st<std::pair<std::string const, TypeVal> >, comp, std::allocator<std::pair<std::string const, TypeVal> > >::_M_erase(std::_Rb_tree_node<std::pair<std::string const, TypeVal> >*)

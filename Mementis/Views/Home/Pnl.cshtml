@@ -1,0 +1,101 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/Pnl.css">
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <title>PnL</title>
+</head>
+<body>
+    <div>
+        Vous avez lancé une simulation de Proft & Loss avec les paramètres suivants :<br />
+        <ul>
+            <li>Date de début : <span style="color:red">@ViewData["startDate"]</span></li>
+            <li>Date de fin : <span style="color:red">@ViewData["endDate"]</span></li>
+            <li>Date courante : <span style="color:red">@ViewData["currentDate"]</span></li>
+            <li>Type de données du passé : <span style="color:red">@ViewData["dataPastType"]</span></li>
+            <li>Nombre de dates de rebalancement : <span style="color:red">@ViewData["nbHedgingDate"]</span></li>
+        </ul>
+
+        Le Profit & Loss obtenu est : <span style="color:red">@ViewData["pnl"]</span> <br />
+
+
+        <br />
+        GRAPHIQUE : Valeur du portefeuille de couverture et prix du produit en fonction du temps
+        <!-- Utiliser @ViewData["valPtfCouv"] et @ViewData["prixPdt"]-->
+        <br />
+
+        @{
+            var prixPdt = ViewData["prixPdt"] as double[];
+            var valPtfCouv = ViewData["valPtfCouv"] as double[];
+        }
+
+        <table style="width:40%">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid black">Prix du Produit</th>
+                    <th style="border: 1px solid black">Valeur du portefeuille de Couverture</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var i = 0; i < @ViewBag.nbHedgingDate; i++)
+                {
+                    <tr>
+                        <td>@prixPdt[i]</td>
+                        <td>@valPtfCouv[i]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div id="box">
+            <div id="container" style="height: 600px; width: 700px"></div>
+        </div>
+        <br />
+        <br />
+        <button type="button" id="Home" onclick="location.href='@Url.Action("Main", "Home")'">Home</button>
+
+        <br />
+        <br />
+
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        var dataChart1 = @ViewData["dataChart1"];
+        var dataChart2 = @ViewData["dataChart2"];
+        Highcharts.stockChart('container', {
+
+            rangeSelector: {
+                selected: 1
+            },
+
+            title: {
+                text: 'Profit & Loss'
+            },
+
+            series: [{
+                name: 'Portefeuille de couverture',
+                data: dataChart1,
+                tooltip: {
+                    valueDecimals: 4
+                }
+            },
+            {
+                name: 'Prix du produit Mementis',
+                data: dataChart2,
+                tooltip: {
+                    valueDecimals: 4
+                }
+            }]
+        });
+    });
+</script>

@@ -1,0 +1,11 @@
+﻿p {
+    font-style: italic;
+    display: inline;
+}
+
+#Home {
+    width: 80px;
+    height: 35px;
+    margin-left: 200px;
+}
+

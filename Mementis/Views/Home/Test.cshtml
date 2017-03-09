@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/css/Test.css">
+    <script src="/Scripts/jquery-3.1.1.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <title>Test</title>
+</head>
+<body>
+    <div> 
+        <ul>
+            <li>
+                Test d'un tirage aléatoire selon une loi normale centrée réduite via du code C++ Natif (et utilisant la librairie PNL) : @ViewData["Random"]
+            </li>
+            <li>
+                Test Jquery : <p>Voir console du navigateur web</p>
+            </li>
+            <li>
+                Test CSS : <p>Ceci est écrit en italique !</p>
+            </li>
+        </ul>
+        <div id="container" style="height: 400px; min-width: 310px"></div>
+        <br />
+        <button type="button" id="Home" onclick="location.href='@Url.Action("Main", "Home")'">Home</button>
+    </div>
+</body>
+</html>
+<script>
+    $(function () {
+        var dataChart = @ViewData["dataChart"];
+        Highcharts.stockChart('container', {
+
+            rangeSelector: {
+                selected: 1
+            },
+
+            title: {
+                text: 'Title'
+            },
+
+            series: [{
+                name: 'Data',
+                data: dataChart,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        });
+    });
+ </script>

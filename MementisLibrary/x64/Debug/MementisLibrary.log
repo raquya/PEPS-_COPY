@@ -1,0 +1,21 @@
+﻿  Utils.cpp
+  ProduitMementis.cpp
+  MonteCarlo.cpp
+src\MonteCarlo.cpp(255): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+src\MonteCarlo.cpp(286): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  MementisLibrary.cpp
+src\MementisLibrary.cpp(33): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+src\MementisLibrary.cpp(110): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  FlowCalculator.cpp
+  ConstantVolatilityModel.cpp
+  ConstantRateModel.cpp
+  BSParameters.cpp
+  BlackScholesModel.cpp
+src\BlackScholesModel.cpp(50): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+src\BlackScholesModel.cpp(138): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+src\BlackScholesModel.cpp(191): warning C4244: 'initialisation' : conversion de 'double' en 'int', perte possible de données
+  Génération de code en cours...
+c:\users\ensimag\documents\visual studio 2013\projects\mementis\mementislibrary\src\mementislibrary.cpp(72): warning C4700: variable locale 'tmp1' non initialisée utilisée
+     Création de la bibliothèque C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisLibrary.lib et de l'objet C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisLibrary.exp
+  MementisLibrary.vcxproj -> C:\Users\ensimag\Documents\Visual Studio 2013\Projects\mementis\x64\Debug\MementisLibrary.dll
+          1 fichier(s) copié(s).
