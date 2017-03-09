@@ -21,7 +21,8 @@ public:
 	PnlVect *mu_;
 	PnlVect *Gn;
 	int hedgingDateNb_;
-
+	std::map<int,int> mapDevises;
+	
 	BSParameters(int size, RateModel* r, PnlMat* matCorr, PnlVect * sigma, PnlVect* spot, PnlVect* mu, int hedgingDateNumber, std::map<int,int> mapDevises);
 
 	~BSParameters();

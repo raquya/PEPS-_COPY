@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 
 
     Param *P = new Parser(infile);
-
+    int nbDevises = 3;
     // Extraction des parametres avec le parser
     P->extract("option size", size);
     P->extract("spot", spot, size);
@@ -98,24 +98,34 @@ int main(int argc, char **argv)
     pnl_rng_sseed(rng, time(NULL));
 
 
-    PnlMat *past = pnl_mat_create(1,size);
+    PnlMat *past = pnl_mat_create(1,size + nbDevises);
     Produit *produit;
     FlowCalculator * flow = NULL;
-    RateModel* interest_ = new ConstantRateModel(interest);
-    PnlMat* matCorr = pnl_mat_create(size,size);
+    RateModel* interest_ = new ConstantRateModel();
+    PnlMat* matCorr = pnl_mat_create(size + nbDevises, size + nbDevises);
 
     if(type == "mementis") {
+        PnlMat* matCorr = pnl_mat_create(size + nbDevises, size + nbDevises);
         flow = new FlowCalculator(vlo);
-        produit = new ProduitMementis(flow, maturity, timeStepsNb, size, timeStepsNb, interest_);
-        Utils::matriceCorrelation(matCorr, rng, size);
-        mu = pnl_vect_create(size);
+        produit = new ProduitMementis(flow, maturity, timeStepsNb, size, timeStepsNb, interest_, mapDevises);
+        Utils::matriceCorrelation(matCorr, rng, size + nbDevises);
+        mu = pnl_vect_create(size + nbDevises);
         Utils::mu(mu);
-        sigma = pnl_vect_create(size);
+        sigma = pnl_vect_create(size + nbDevises);
         Utils::sigma(sigma);
-        for (int i =0; i< size; i++) {
-            pnl_vect_set(spot, i, pnl_rng_uni_ab(80,120,rng));
+        for (int i =0; i< (size+ nbDevises); i++) {
+            if (i <size){
+                pnl_vect_set(spot, i, pnl_rng_uni_ab(80,120,rng));
+            }else if (i == size){
+                pnl_vect_set(spot, i, 0.943);
+            }else if (i == size +1){
+                pnl_vect_set(spot, i, 1.1505);
+            }else{
+                pnl_vect_set(spot, i, 0.0082);
+            }
         }
     } else if (type == "basket") {
+        PnlMat* matCorr = pnl_mat_create(size,size);
         produit = new BasketOption(maturity, timeStepsNb, size, strike , payoffCoeff, interest_);
         for(int i = 0; i < size; i++) {
             for(int j = i; j < size; j++) {
@@ -130,6 +140,7 @@ int main(int argc, char **argv)
         mu = pnl_vect_create_from_scalar(size, 0.05 );
         sigma = pnl_vect_create_from_scalar(size,0.2);
     } else if(type == "asian") {
+        PnlMat* matCorr = pnl_mat_create(size,size);
         produit = new AsianOption(maturity, timeStepsNb, size, strike, payoffCoeff, interest_);
         for(int i = 0; i < size; i++) {
             for(int j = i; j < size; j++) {
@@ -149,7 +160,7 @@ int main(int argc, char **argv)
 
     pnl_mat_set_row(past,spot, 0);
 
-    BSParameters* bsparameters = new BSParameters(size, interest_, matCorr, sigma, spot,mu, hedgingDateNumber, mapDevises);
+    BSParameters* bsparameters = new BSParameters(size + nbDevises, interest_, matCorr, sigma, spot, mu, hedgingDateNumber, mapDevises);
     BlackScholesModel *model = new BlackScholesModel(bsparameters, maturity, timeStepsNb);
     MonteCarlo *montecarlo = new MonteCarlo(model, produit, rng, steps, sample);
 
@@ -161,8 +172,8 @@ int main(int argc, char **argv)
         montecarlo->price(prix, icPrix);
         montecarlo->affichagePrice(0.0, prix, icPrix);
 
-        PnlVect *delta = pnl_vect_create_from_zero(size);
-        PnlVect *icDelta = pnl_vect_create_from_zero(size);
+        PnlVect *delta = pnl_vect_create_from_zero(size + nbDevises);
+        PnlVect *icDelta = pnl_vect_create_from_zero(size + nbDevises);
         montecarlo->delta(past, 0.0, delta, icDelta);
         montecarlo->affichageDelta(delta, icDelta);
 

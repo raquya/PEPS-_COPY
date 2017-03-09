@@ -12,13 +12,14 @@ ProduitMementis::~ProduitMementis()
 {
 }
 
-ProduitMementis::ProduitMementis(FlowCalculator* flow, double maturity, int nbTimeSteps_, int nbAsset_, int nbConstationDates, RateModel* interest) {
+ProduitMementis::ProduitMementis(FlowCalculator* flow, double maturity, int nbTimeSteps_, int nbAsset_, int nbConstationDates, RateModel* interest, std::map<int,int> mapDevises) {
 	this->flowCalculator = flow;
 	this->T_ = maturity;
 	this->nbTimeSteps_= nbTimeSteps_;
 	this->nbAssets_ = nbAsset_;
 	this->nbConstationDates = nbConstationDates;
 	interestRate_ = interest;
+	this->mapDevises = mapDevises;
 	PayOffReel = 0;
 }
 
@@ -36,7 +37,7 @@ double ProduitMementis::payoff(const PnlMat *path){
 
 	//double moyenne;
 	for (int i = 0 ; i<= this->nbConstationDates; i++){
-		flowCalculator->performanceInTheYear(i, path, nbAssets_, PerformanceVect);
+		flowCalculator->performanceInTheYear(i, path, nbAssets_, PerformanceVect, this->mapDevises, interestRate_);
 	}
 
 	double entryPerformance = flowCalculator->performanceAtEntryPoint(path, nbAssets_, PerformanceVect);

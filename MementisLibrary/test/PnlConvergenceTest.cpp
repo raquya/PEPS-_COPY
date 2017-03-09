@@ -87,7 +87,7 @@ int main(int argc, char **argv) {
 	double PnL;
 	int nbDePnl = 12;
 	PnlMat* market = pnl_mat_create(hedgingDateNumber+1,nbActions);
-	model->asset(market,rng,true);
+	model->simulMarket(market,rng,true);
 	PnlVect *Pnl = pnl_vect_create_from_zero(nbDePnl);
 	PnlVect *V = pnl_vect_create_from_zero(hedgingDateNumber+1);
 	PnlVect *prixPdt = pnl_vect_create_from_zero(hedgingDateNumber+1);

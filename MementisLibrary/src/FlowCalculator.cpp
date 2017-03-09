@@ -18,11 +18,11 @@ FlowCalculator::~FlowCalculator()
 }
 
 
-void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect)
+void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,int> mapDevise, RateModel* interest)
 {
 	double sum = 0;
+	int indiceDevise ;
 	//double valRef = 0;
-
 
 	PnlVect V;
 	PnlVect W;
@@ -33,7 +33,15 @@ void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, 
 		V = pnl_vect_wrap_mat_row(path, i);
 		W = pnl_vect_wrap_mat_row(path, 0);
 		pnl_vect_div_vect_term(&V, &W);
-		sum = pnl_vect_sum(&V);
+		for (int j =0 ; j< size ; j++) {
+			indiceDevise = mapDevise[j];
+			if (indiceDevise != 3){
+				sum += GET(&V,j)/GET(&V, size + indiceDevise)*exp(interest->integrateRate(0, i, indiceDevise));
+			}else{
+				sum += GET(&V,j);
+			}
+		}
+		//sum = pnl_vect_sum(&V);
 		pnl_vect_set(PerformanceVect, i , sum/size);
 	}
 }

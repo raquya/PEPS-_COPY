@@ -68,6 +68,12 @@ void Utils::mu(PnlVect *mu) {
     LET(mu,23) = 0.0187;
     //VERIZON INC
     LET(mu,24) = 0.0438;
+    //USD
+    LET(mu,25) = 0.0039;
+    //GBP
+    LET(mu,26) = 0.0028;
+    //JPY
+    LET(mu,27) = 0.0021; 
 }
 
 void Utils::sigma(PnlVect *sigma) {
@@ -121,36 +127,43 @@ void Utils::sigma(PnlVect *sigma) {
     LET(sigma,23) = 0.084;
     //VERIZON INC
     LET(sigma,24) = 0.077;
+    //USD
+    LET(sigma,25) = 0.050;
+    //GBP
+    LET(sigma,26) = 0.045;
+    //JPY
+    LET(sigma,27) = 0.041; 
 }
 
 
 void Utils::mapsDevises(std::map<int,int>& devises) {
-    double YJP = 1;
+    double JPY = 3;
+    double GBP = 2;
     double USD = 1;
-    double EUR = 1;
-    devises[0] =  YJP;
-    devises[1] =  YJP;
-    devises[2] =  YJP;
-    devises[3] =  YJP;
-    devises[4] =  YJP;
-    devises[5] =  YJP;
-    devises[6] =  YJP;
-    devises[7] =  YJP;
-    devises[8] =  YJP;
-    devises[9] =  YJP;
-    devises[10] =  YJP;
-    devises[11] =  YJP;
-    devises[12] =  YJP;
-    devises[13] =  YJP;
-    devises[14] =  YJP;
-    devises[15] =  YJP;
-    devises[16] =  YJP;
-    devises[17] =  YJP;
-    devises[18] =  YJP;
-    devises[19] =  YJP;
-    devises[20] =  YJP;
-    devises[21] =  YJP;
-    devises[22] =  YJP;
-    devises[23] =  YJP;
-    devises[24] =  YJP;
+    double EUR = 0;
+    devises[0] =  JPY;
+    devises[1] =  JPY;
+    devises[2] =  JPY;
+    devises[3] =  JPY;
+    devises[4] =  JPY;
+    devises[5] =  USD;
+    devises[6] =  GBP;
+    devises[7] =  GBP;
+    devises[8] =  EUR;
+    devises[9] =  EUR;
+    devises[10] =  EUR;
+    devises[11] =  EUR;
+    devises[12] =  EUR;
+    devises[13] =  EUR;
+    devises[14] =  EUR;
+    devises[15] =  EUR;
+    devises[16] =  EUR;
+    devises[17] =  USD;
+    devises[18] =  GBP;
+    devises[19] =  EUR;
+    devises[20] =  EUR;
+    devises[21] =  EUR;
+    devises[22] =  EUR;
+    devises[23] =  EUR;
+    devises[24] =  USD;
 }

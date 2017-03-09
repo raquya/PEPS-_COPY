@@ -2,6 +2,9 @@
 
 #include "pnl/pnl_vector.h"
 #include "pnl/pnl_matrix.h"
+#include <map>
+#include "RateModel.hpp"
+#include <math.h>
 
 
 class FlowCalculator
@@ -13,7 +16,7 @@ public:
 	FlowCalculator(double VLO);
 	~FlowCalculator();
 
-	void performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect);
+	void performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,int> mapDevise, RateModel* interest);
 
 	double performanceAtEntryPoint(const PnlMat * path, int size, PnlVect* performanceVect);
 

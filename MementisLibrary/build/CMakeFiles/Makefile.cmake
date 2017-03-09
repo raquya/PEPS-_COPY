@@ -47,9 +47,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/TestConvergencePnL.dir/DependInfo.cmake"
-  "CMakeFiles/DeltaCallTest.dir/DependInfo.cmake"
-  "CMakeFiles/HedgingCallTest.dir/DependInfo.cmake"
-  "CMakeFiles/TestPayOffMin.dir/DependInfo.cmake"
   "CMakeFiles/pricer.dir/DependInfo.cmake"
   )

@@ -53,20 +53,20 @@ target_link_libraries(pricer ${LIBS})
 
 
 #TestHedging
-add_executable(HedgingCallTest src/BlackScholesModel.cpp src/MonteCarlo.cpp  test/HedgingCallTest.cpp src/BSParameters.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/BasketOption.cpp )
-target_link_libraries(HedgingCallTest ${LIBS})
+#add_executable(HedgingCallTest src/BlackScholesModel.cpp src/MonteCarlo.cpp  test/HedgingCallTest.cpp src/BSParameters.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/BasketOption.cpp )
+#target_link_libraries(HedgingCallTest ${LIBS})
 
 #TestDelta
-add_executable(DeltaCallTest src/BlackScholesModel.cpp src/MonteCarlo.cpp test/DeltaCallTest.cpp src/BSParameters.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/BasketOption.cpp src/AsianOption.cpp)
-target_link_libraries(DeltaCallTest ${LIBS})
+#add_executable(DeltaCallTest src/BlackScholesModel.cpp src/MonteCarlo.cpp test/DeltaCallTest.cpp src/BSParameters.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/BasketOption.cpp src/AsianOption.cpp)
+#target_link_libraries(DeltaCallTest ${LIBS})
 
 #TestPayOff valeur minimum
-add_executable(TestPayOffMin test/TestPayOffMin.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp)
-target_link_libraries(TestPayOffMin ${LIBS})
+#add_executable(TestPayOffMin test/TestPayOffMin.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp)
+#target_link_libraries(TestPayOffMin ${LIBS})
 
 #Test convergence du PnL
-add_executable(TestConvergencePnL test/PnlConvergenceTest.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/FlowCalculator.cpp src/BSParameters.cpp src/BlackScholesModel.cpp src/MonteCarlo.cpp src/Utils.cpp)
-target_link_libraries(TestConvergencePnL ${LIBS})
+#add_executable(TestConvergencePnL test/PnlConvergenceTest.cpp src/FlowCalculator.cpp src/ProduitMementis.cpp src/ConstantVolatilityModel.cpp src/ConstantRateModel.cpp src/FlowCalculator.cpp src/BSParameters.cpp src/BlackScholesModel.cpp src/MonteCarlo.cpp src/Utils.cpp)
+#target_link_libraries(TestConvergencePnL ${LIBS})
 
 
 # Library

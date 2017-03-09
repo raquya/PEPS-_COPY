@@ -33,7 +33,7 @@ void MonteCarlo::price(double &prix, double &ic) {
     double termeExp = exp(-mod_->parameters->r_->integrateRate(0,maturite));
     double sommePayOff = 0;
     double sommePayOffCarre = 0;
-    PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ + 1,mod_->parameters->size_);
+    PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ + 1, mod_->parameters->size_);
     // Application de Montecarlo
     for (int i = 0; i< nbSamples_; i++) {
         mod_->asset(path, rng_);
@@ -126,17 +126,19 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta) {
       for(int i=0; i < M; i++) {
           // On simule le path
           mod_->asset(path, t, past, rng_);
-
+          for (int j = mod_->parameters->mapDevises.size() ; j < mod_->parameters->size_; j++){
+            
+          }
           // Pour chaque asset on fait le calcul correspondant
           for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
-              // On fait le shift avec fdStep
-              mod_->shiftAsset(shift_path_up, path, idAsset, fdStep_, t , (maturite / (double)pdt_->nbTimeSteps_));
-              // On fait le shift avec -fdStep
-              mod_->shiftAsset(shift_path_down, path, idAsset, -fdStep_, t , (maturite / (double)pdt_->nbTimeSteps_));
-              // On calcule la difference des payOff shiftés
-              sommeDiffPayOff = pdt_->payoff(shift_path_up) - pdt_->payoff(shift_path_down);
-              // On met le resultat dans le vecteur delta
-              LET(delta,idAsset) = GET(delta,idAsset) + sommeDiffPayOff;
+            // On fait le shift avec fdStep
+            mod_->shiftAsset(shift_path_up, path, idAsset, fdStep_, t , (maturite / (double)pdt_->nbTimeSteps_));
+            // On fait le shift avec -fdStep
+            mod_->shiftAsset(shift_path_down, path, idAsset, -fdStep_, t , (maturite / (double)pdt_->nbTimeSteps_));
+            // On calcule la difference des payOff shiftés
+            sommeDiffPayOff = pdt_->payoff(shift_path_up) - pdt_->payoff(shift_path_down);
+            // On met le resultat dans le vecteur delta
+            LET(delta,idAsset) = GET(delta,idAsset) + sommeDiffPayOff;
           }
       }
 

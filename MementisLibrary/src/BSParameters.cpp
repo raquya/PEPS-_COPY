@@ -13,6 +13,7 @@ BSParameters::BSParameters(int size, RateModel* r, PnlMat* matCorr, PnlVect * si
 	this->mu_ = mu;
 	this->Gn = pnl_vect_create(size_);
 	this->CorrelationMat = matCorr;
+	this->mapDevises = mapDevises;
 
 	// Factorisation de cholesky de la matrice de correlation
 	this->cholesky = pnl_mat_chol(CorrelationMat);

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake3 -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /user/2/raquya/Troisieme_Annee/S5/PEPS/Mementis/MementisLibrary
+CMAKE_SOURCE_DIR = "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /user/2/raquya/Troisieme_Annee/S5/PEPS/Mementis/MementisLibrary/build
+CMAKE_BINARY_DIR = "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/2/raquya/Troisieme_Annee/S5/PEPS/Mementis/MementisLibrary/build/CMakeFiles /user/2/raquya/Troisieme_Annee/S5/PEPS/Mementis/MementisLibrary/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build/CMakeFiles" "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build/CMakeFiles/progress.marks"
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /user/2/raquya/Troisieme_Annee/S5/PEPS/Mementis/MementisLibrary/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -111,58 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TestConvergencePnL
-
-# Build rule for target.
-TestConvergencePnL: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestConvergencePnL
-.PHONY : TestConvergencePnL
-
-# fast build rule for target.
-TestConvergencePnL/fast:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/build
-.PHONY : TestConvergencePnL/fast
-
-#=============================================================================
-# Target rules for targets named DeltaCallTest
-
-# Build rule for target.
-DeltaCallTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 DeltaCallTest
-.PHONY : DeltaCallTest
-
-# fast build rule for target.
-DeltaCallTest/fast:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/build
-.PHONY : DeltaCallTest/fast
-
-#=============================================================================
-# Target rules for targets named HedgingCallTest
-
-# Build rule for target.
-HedgingCallTest: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 HedgingCallTest
-.PHONY : HedgingCallTest
-
-# fast build rule for target.
-HedgingCallTest/fast:
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/build
-.PHONY : HedgingCallTest/fast
-
-#=============================================================================
-# Target rules for targets named TestPayOffMin
-
-# Build rule for target.
-TestPayOffMin: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 TestPayOffMin
-.PHONY : TestPayOffMin
-
-# fast build rule for target.
-TestPayOffMin/fast:
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/build
-.PHONY : TestPayOffMin/fast
-
-#=============================================================================
 # Target rules for targets named pricer
 
 # Build rule for target.
@@ -181,7 +129,6 @@ src/AsianOption.o: src/AsianOption.cpp.o
 
 # target to build an object file
 src/AsianOption.cpp.o:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/AsianOption.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/AsianOption.cpp.o
 .PHONY : src/AsianOption.cpp.o
 
@@ -191,7 +138,6 @@ src/AsianOption.i: src/AsianOption.cpp.i
 
 # target to preprocess a source file
 src/AsianOption.cpp.i:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/AsianOption.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/AsianOption.cpp.i
 .PHONY : src/AsianOption.cpp.i
 
@@ -201,7 +147,6 @@ src/AsianOption.s: src/AsianOption.cpp.s
 
 # target to generate assembly for a file
 src/AsianOption.cpp.s:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/AsianOption.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/AsianOption.cpp.s
 .PHONY : src/AsianOption.cpp.s
 
@@ -211,9 +156,6 @@ src/BSParameters.o: src/BSParameters.cpp.o
 
 # target to build an object file
 src/BSParameters.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BSParameters.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BSParameters.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BSParameters.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BSParameters.cpp.o
 .PHONY : src/BSParameters.cpp.o
 
@@ -223,9 +165,6 @@ src/BSParameters.i: src/BSParameters.cpp.i
 
 # target to preprocess a source file
 src/BSParameters.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BSParameters.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BSParameters.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BSParameters.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BSParameters.cpp.i
 .PHONY : src/BSParameters.cpp.i
 
@@ -235,9 +174,6 @@ src/BSParameters.s: src/BSParameters.cpp.s
 
 # target to generate assembly for a file
 src/BSParameters.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BSParameters.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BSParameters.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BSParameters.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BSParameters.cpp.s
 .PHONY : src/BSParameters.cpp.s
 
@@ -247,8 +183,6 @@ src/BasketOption.o: src/BasketOption.cpp.o
 
 # target to build an object file
 src/BasketOption.cpp.o:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BasketOption.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BasketOption.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BasketOption.cpp.o
 .PHONY : src/BasketOption.cpp.o
 
@@ -258,8 +192,6 @@ src/BasketOption.i: src/BasketOption.cpp.i
 
 # target to preprocess a source file
 src/BasketOption.cpp.i:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BasketOption.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BasketOption.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BasketOption.cpp.i
 .PHONY : src/BasketOption.cpp.i
 
@@ -269,8 +201,6 @@ src/BasketOption.s: src/BasketOption.cpp.s
 
 # target to generate assembly for a file
 src/BasketOption.cpp.s:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BasketOption.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BasketOption.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BasketOption.cpp.s
 .PHONY : src/BasketOption.cpp.s
 
@@ -280,9 +210,6 @@ src/BlackScholesModel.o: src/BlackScholesModel.cpp.o
 
 # target to build an object file
 src/BlackScholesModel.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BlackScholesModel.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BlackScholesModel.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BlackScholesModel.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BlackScholesModel.cpp.o
 .PHONY : src/BlackScholesModel.cpp.o
 
@@ -292,9 +219,6 @@ src/BlackScholesModel.i: src/BlackScholesModel.cpp.i
 
 # target to preprocess a source file
 src/BlackScholesModel.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BlackScholesModel.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BlackScholesModel.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BlackScholesModel.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BlackScholesModel.cpp.i
 .PHONY : src/BlackScholesModel.cpp.i
 
@@ -304,9 +228,6 @@ src/BlackScholesModel.s: src/BlackScholesModel.cpp.s
 
 # target to generate assembly for a file
 src/BlackScholesModel.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/BlackScholesModel.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/BlackScholesModel.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/BlackScholesModel.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/BlackScholesModel.cpp.s
 .PHONY : src/BlackScholesModel.cpp.s
 
@@ -316,10 +237,6 @@ src/ConstantRateModel.o: src/ConstantRateModel.cpp.o
 
 # target to build an object file
 src/ConstantRateModel.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantRateModel.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantRateModel.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantRateModel.cpp.o
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantRateModel.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantRateModel.cpp.o
 .PHONY : src/ConstantRateModel.cpp.o
 
@@ -329,10 +246,6 @@ src/ConstantRateModel.i: src/ConstantRateModel.cpp.i
 
 # target to preprocess a source file
 src/ConstantRateModel.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantRateModel.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantRateModel.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantRateModel.cpp.i
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantRateModel.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantRateModel.cpp.i
 .PHONY : src/ConstantRateModel.cpp.i
 
@@ -342,10 +255,6 @@ src/ConstantRateModel.s: src/ConstantRateModel.cpp.s
 
 # target to generate assembly for a file
 src/ConstantRateModel.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantRateModel.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantRateModel.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantRateModel.cpp.s
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantRateModel.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantRateModel.cpp.s
 .PHONY : src/ConstantRateModel.cpp.s
 
@@ -355,10 +264,6 @@ src/ConstantVolatilityModel.o: src/ConstantVolatilityModel.cpp.o
 
 # target to build an object file
 src/ConstantVolatilityModel.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantVolatilityModel.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantVolatilityModel.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantVolatilityModel.cpp.o
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantVolatilityModel.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantVolatilityModel.cpp.o
 .PHONY : src/ConstantVolatilityModel.cpp.o
 
@@ -368,10 +273,6 @@ src/ConstantVolatilityModel.i: src/ConstantVolatilityModel.cpp.i
 
 # target to preprocess a source file
 src/ConstantVolatilityModel.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantVolatilityModel.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantVolatilityModel.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantVolatilityModel.cpp.i
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantVolatilityModel.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantVolatilityModel.cpp.i
 .PHONY : src/ConstantVolatilityModel.cpp.i
 
@@ -381,10 +282,6 @@ src/ConstantVolatilityModel.s: src/ConstantVolatilityModel.cpp.s
 
 # target to generate assembly for a file
 src/ConstantVolatilityModel.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ConstantVolatilityModel.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ConstantVolatilityModel.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ConstantVolatilityModel.cpp.s
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ConstantVolatilityModel.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ConstantVolatilityModel.cpp.s
 .PHONY : src/ConstantVolatilityModel.cpp.s
 
@@ -394,10 +291,6 @@ src/FlowCalculator.o: src/FlowCalculator.cpp.o
 
 # target to build an object file
 src/FlowCalculator.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/FlowCalculator.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/FlowCalculator.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/FlowCalculator.cpp.o
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/FlowCalculator.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/FlowCalculator.cpp.o
 .PHONY : src/FlowCalculator.cpp.o
 
@@ -407,10 +300,6 @@ src/FlowCalculator.i: src/FlowCalculator.cpp.i
 
 # target to preprocess a source file
 src/FlowCalculator.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/FlowCalculator.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/FlowCalculator.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/FlowCalculator.cpp.i
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/FlowCalculator.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/FlowCalculator.cpp.i
 .PHONY : src/FlowCalculator.cpp.i
 
@@ -420,10 +309,6 @@ src/FlowCalculator.s: src/FlowCalculator.cpp.s
 
 # target to generate assembly for a file
 src/FlowCalculator.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/FlowCalculator.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/FlowCalculator.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/FlowCalculator.cpp.s
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/FlowCalculator.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/FlowCalculator.cpp.s
 .PHONY : src/FlowCalculator.cpp.s
 
@@ -433,9 +318,6 @@ src/MonteCarlo.o: src/MonteCarlo.cpp.o
 
 # target to build an object file
 src/MonteCarlo.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/MonteCarlo.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/MonteCarlo.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/MonteCarlo.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/MonteCarlo.cpp.o
 .PHONY : src/MonteCarlo.cpp.o
 
@@ -445,9 +327,6 @@ src/MonteCarlo.i: src/MonteCarlo.cpp.i
 
 # target to preprocess a source file
 src/MonteCarlo.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/MonteCarlo.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/MonteCarlo.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/MonteCarlo.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/MonteCarlo.cpp.i
 .PHONY : src/MonteCarlo.cpp.i
 
@@ -457,9 +336,6 @@ src/MonteCarlo.s: src/MonteCarlo.cpp.s
 
 # target to generate assembly for a file
 src/MonteCarlo.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/MonteCarlo.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/MonteCarlo.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/MonteCarlo.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/MonteCarlo.cpp.s
 .PHONY : src/MonteCarlo.cpp.s
 
@@ -469,10 +345,6 @@ src/ProduitMementis.o: src/ProduitMementis.cpp.o
 
 # target to build an object file
 src/ProduitMementis.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ProduitMementis.cpp.o
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ProduitMementis.cpp.o
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ProduitMementis.cpp.o
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ProduitMementis.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ProduitMementis.cpp.o
 .PHONY : src/ProduitMementis.cpp.o
 
@@ -482,10 +354,6 @@ src/ProduitMementis.i: src/ProduitMementis.cpp.i
 
 # target to preprocess a source file
 src/ProduitMementis.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ProduitMementis.cpp.i
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ProduitMementis.cpp.i
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ProduitMementis.cpp.i
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ProduitMementis.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ProduitMementis.cpp.i
 .PHONY : src/ProduitMementis.cpp.i
 
@@ -495,10 +363,6 @@ src/ProduitMementis.s: src/ProduitMementis.cpp.s
 
 # target to generate assembly for a file
 src/ProduitMementis.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/ProduitMementis.cpp.s
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/src/ProduitMementis.cpp.s
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/src/ProduitMementis.cpp.s
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/src/ProduitMementis.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/ProduitMementis.cpp.s
 .PHONY : src/ProduitMementis.cpp.s
 
@@ -508,7 +372,6 @@ src/Utils.o: src/Utils.cpp.o
 
 # target to build an object file
 src/Utils.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/Utils.cpp.o
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/Utils.cpp.o
 .PHONY : src/Utils.cpp.o
 
@@ -518,7 +381,6 @@ src/Utils.i: src/Utils.cpp.i
 
 # target to preprocess a source file
 src/Utils.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/Utils.cpp.i
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/Utils.cpp.i
 .PHONY : src/Utils.cpp.i
 
@@ -528,7 +390,6 @@ src/Utils.s: src/Utils.cpp.s
 
 # target to generate assembly for a file
 src/Utils.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/src/Utils.cpp.s
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/Utils.cpp.s
 .PHONY : src/Utils.cpp.s
 
@@ -586,114 +447,6 @@ src/pricer.cpp.s:
 	$(MAKE) -f CMakeFiles/pricer.dir/build.make CMakeFiles/pricer.dir/src/pricer.cpp.s
 .PHONY : src/pricer.cpp.s
 
-test/DeltaCallTest.o: test/DeltaCallTest.cpp.o
-
-.PHONY : test/DeltaCallTest.o
-
-# target to build an object file
-test/DeltaCallTest.cpp.o:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/test/DeltaCallTest.cpp.o
-.PHONY : test/DeltaCallTest.cpp.o
-
-test/DeltaCallTest.i: test/DeltaCallTest.cpp.i
-
-.PHONY : test/DeltaCallTest.i
-
-# target to preprocess a source file
-test/DeltaCallTest.cpp.i:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/test/DeltaCallTest.cpp.i
-.PHONY : test/DeltaCallTest.cpp.i
-
-test/DeltaCallTest.s: test/DeltaCallTest.cpp.s
-
-.PHONY : test/DeltaCallTest.s
-
-# target to generate assembly for a file
-test/DeltaCallTest.cpp.s:
-	$(MAKE) -f CMakeFiles/DeltaCallTest.dir/build.make CMakeFiles/DeltaCallTest.dir/test/DeltaCallTest.cpp.s
-.PHONY : test/DeltaCallTest.cpp.s
-
-test/HedgingCallTest.o: test/HedgingCallTest.cpp.o
-
-.PHONY : test/HedgingCallTest.o
-
-# target to build an object file
-test/HedgingCallTest.cpp.o:
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/test/HedgingCallTest.cpp.o
-.PHONY : test/HedgingCallTest.cpp.o
-
-test/HedgingCallTest.i: test/HedgingCallTest.cpp.i
-
-.PHONY : test/HedgingCallTest.i
-
-# target to preprocess a source file
-test/HedgingCallTest.cpp.i:
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/test/HedgingCallTest.cpp.i
-.PHONY : test/HedgingCallTest.cpp.i
-
-test/HedgingCallTest.s: test/HedgingCallTest.cpp.s
-
-.PHONY : test/HedgingCallTest.s
-
-# target to generate assembly for a file
-test/HedgingCallTest.cpp.s:
-	$(MAKE) -f CMakeFiles/HedgingCallTest.dir/build.make CMakeFiles/HedgingCallTest.dir/test/HedgingCallTest.cpp.s
-.PHONY : test/HedgingCallTest.cpp.s
-
-test/PnlConvergenceTest.o: test/PnlConvergenceTest.cpp.o
-
-.PHONY : test/PnlConvergenceTest.o
-
-# target to build an object file
-test/PnlConvergenceTest.cpp.o:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/test/PnlConvergenceTest.cpp.o
-.PHONY : test/PnlConvergenceTest.cpp.o
-
-test/PnlConvergenceTest.i: test/PnlConvergenceTest.cpp.i
-
-.PHONY : test/PnlConvergenceTest.i
-
-# target to preprocess a source file
-test/PnlConvergenceTest.cpp.i:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/test/PnlConvergenceTest.cpp.i
-.PHONY : test/PnlConvergenceTest.cpp.i
-
-test/PnlConvergenceTest.s: test/PnlConvergenceTest.cpp.s
-
-.PHONY : test/PnlConvergenceTest.s
-
-# target to generate assembly for a file
-test/PnlConvergenceTest.cpp.s:
-	$(MAKE) -f CMakeFiles/TestConvergencePnL.dir/build.make CMakeFiles/TestConvergencePnL.dir/test/PnlConvergenceTest.cpp.s
-.PHONY : test/PnlConvergenceTest.cpp.s
-
-test/TestPayOffMin.o: test/TestPayOffMin.cpp.o
-
-.PHONY : test/TestPayOffMin.o
-
-# target to build an object file
-test/TestPayOffMin.cpp.o:
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/test/TestPayOffMin.cpp.o
-.PHONY : test/TestPayOffMin.cpp.o
-
-test/TestPayOffMin.i: test/TestPayOffMin.cpp.i
-
-.PHONY : test/TestPayOffMin.i
-
-# target to preprocess a source file
-test/TestPayOffMin.cpp.i:
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/test/TestPayOffMin.cpp.i
-.PHONY : test/TestPayOffMin.cpp.i
-
-test/TestPayOffMin.s: test/TestPayOffMin.cpp.s
-
-.PHONY : test/TestPayOffMin.s
-
-# target to generate assembly for a file
-test/TestPayOffMin.cpp.s:
-	$(MAKE) -f CMakeFiles/TestPayOffMin.dir/build.make CMakeFiles/TestPayOffMin.dir/test/TestPayOffMin.cpp.s
-.PHONY : test/TestPayOffMin.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -701,11 +454,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... TestConvergencePnL"
-	@echo "... DeltaCallTest"
-	@echo "... HedgingCallTest"
 	@echo "... rebuild_cache"
-	@echo "... TestPayOffMin"
 	@echo "... pricer"
 	@echo "... src/AsianOption.o"
 	@echo "... src/AsianOption.i"
@@ -743,18 +492,6 @@ help:
 	@echo "... src/pricer.o"
 	@echo "... src/pricer.i"
 	@echo "... src/pricer.s"
-	@echo "... test/DeltaCallTest.o"
-	@echo "... test/DeltaCallTest.i"
-	@echo "... test/DeltaCallTest.s"
-	@echo "... test/HedgingCallTest.o"
-	@echo "... test/HedgingCallTest.i"
-	@echo "... test/HedgingCallTest.s"
-	@echo "... test/PnlConvergenceTest.o"
-	@echo "... test/PnlConvergenceTest.i"
-	@echo "... test/PnlConvergenceTest.s"
-	@echo "... test/TestPayOffMin.o"
-	@echo "... test/TestPayOffMin.i"
-	@echo "... test/TestPayOffMin.s"
 .PHONY : help
 
 
