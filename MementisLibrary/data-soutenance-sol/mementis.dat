@@ -10,7 +10,7 @@ model type <string> bs
 option size <int> 25
 option type <string> mementis
 payoff coefficients <vector> 0.1 
-sample number <long> 1000
+sample number <long> 10000
 spot <vector> 100 
 strike <float> 100
 TimeStep number <int> 12

@@ -36,17 +36,13 @@ void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, 
 		for (int j =0 ; j< size ; j++) {
 			indiceDevise = mapDevise[j];
 			if (indiceDevise != 3){
-
 				sum += GET(V,j)/GET(V, size + indiceDevise)*exp(interest->integrateRate(0, i, indiceDevise));
 			}else{
 				sum += GET(V,j);
 			}
 		}
-		//sum = pnl_vect_sum(&V);
-		//std::cout << sum/size << std::endl;
 		pnl_vect_set(PerformanceVect, i , sum/size);
 	}
-
 	pnl_vect_free(&V);
 	pnl_vect_free(&W);
 }
@@ -81,9 +77,6 @@ void FlowCalculator::performanceComparedToEntryPoint(int i, const PnlMat * path,
 	pnl_vect_minus_vect (V, W);
 	pnl_vect_div_vect_term(V, W);
 
-	//Limiter les coefficients de V à 0.1
-
-	//sum = pnl_vect_sum(&V);
 
 
 	for (int k = 0; k < size; k++) {

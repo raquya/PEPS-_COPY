@@ -176,6 +176,7 @@ int main(int argc, char **argv)
         PnlVect *delta = pnl_vect_create_from_zero(size + nbDevises);
         PnlVect *icDelta = pnl_vect_create_from_zero(size + nbDevises);
         montecarlo->delta(past, 0.0, delta, icDelta);
+        //montecarlo->delta(past, 0.0, delta);
         montecarlo->affichageDelta(delta, icDelta);
 
         pnl_vect_free(&spot);

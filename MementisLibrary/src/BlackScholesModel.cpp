@@ -77,6 +77,8 @@ void BlackScholesModel::asset(PnlMat *path, double t, const PnlMat *past, PnlRng
 	double sSimul;
 	double st;
 	double r;
+	int sizeStocks = parameters->mapDevises.size();
+	int devise;
 
 	double LG;
 	PnlVect Ldt;
@@ -91,11 +93,26 @@ void BlackScholesModel::asset(PnlMat *path, double t, const PnlMat *past, PnlRng
 		t2 = (maturity_ /(double)nbTimeSteps_)*(n+1);
 		u = t2 - t1;
 		for (int d = 0; d < parameters->size_; d++) {
-			r = parameters->r_->getRate(3)
+			r = parameters->r_->getRate(3);
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
-			st = MGET(past, (past->m - 1), d);
-			volatilite = GET(parameters->sigma_, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
+			st = MGET(past, (past->m - 1), d);
+			volatilite = 0;
+			// Si je suis un sous-jacent
+			if (d< sizeStocks) {
+				//Recupère le numero de la devise du sous jacent
+				devise = parameters->mapDevises[d];
+				if (devise != 0){ // Si je suis en monnaie étrangère
+					//Je récupère la vol correspondante à la devise étrangère
+					volatilite = GET(parameters->sigma_, (sizeStocks -1 +devise));
+				}
+				// ma volatilité est égale à la vol de l'actif  + la vol de la devise correspondante
+				volatilite += GET(parameters->sigma_, d);
+			}else{
+				volatilite += GET(parameters->sigma_, d);
+				// Si je suis une devise, je récupère le taux rf et je le soustrais au taux domestique
+				r-= parameters->r_->getRate(d-sizeStocks);
+			}
 			sTilde = exp((r - (volatilite * volatilite) / 2.0)*u + volatilite * sqrt(u) * LG);
 			if (prem) {
 				sSimul = st * sTilde;
@@ -103,7 +120,11 @@ void BlackScholesModel::asset(PnlMat *path, double t, const PnlMat *past, PnlRng
 			} else {
 				sSimul = MGET(path, n, d) * sTilde;
 			}
-			MLET(path, n+1, d) = sSimul;
+			if (d < sizeStocks) {
+				MLET(path, n+1, d) = sSimul ;
+			}else{
+				MLET(path, n+1, d) =sSimul * exp(parameters->r_->integrateRate(0, t + u + u*(n-debutSimulation), devise));
+			}
 		}
 	}
 
@@ -118,7 +139,11 @@ void BlackScholesModel::simulMarket(PnlMat *path, PnlRng* rng_, bool pnl) {
 	PnlVect Ldt;
 	double exprExp;
 	double volatilite;
+	int sizeStocks = parameters->mapDevises.size();
 
+	int devise;
+	double r;
+	
 	double ndDates;
 	if (pnl) {
 		ndDates = parameters->hedgingDateNb_;
@@ -132,14 +157,34 @@ void BlackScholesModel::simulMarket(PnlMat *path, PnlRng* rng_, bool pnl) {
 	for (int n = 0; n < ndDates; n++) {
 		pnl_vect_rng_normal(parameters->Gn, parameters->size_, rng_);
 		for (int d = 0; d < parameters->size_; d++) {
+			r = parameters->r_->getRate(3);
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
-			volatilite = GET(parameters->sigma_, d);
+			volatilite = 0;
+			// on regarde si action ou devise
+			if (d < sizeStocks) {
+				//On regarde la vol étrangère
+				devise = parameters->mapDevises[d]; 
+				if(devise != 0) {
+					volatilite = GET(parameters->sigma_, (sizeStocks - 1 + devise));
+				}
+				volatilite += GET(parameters->sigma_, d) ;
+			}else{
+				volatilite = GET(parameters->sigma_, d);
+				r -= parameters->r_->getRate(d - sizeStocks); 
+			}
 			exprExp = (GET(parameters->mu_, d) - (volatilite * volatilite / 2.0)) * pasTemps + volatilite * sqrt(pasTemps) * LG;
-			MLET(path, n + 1, d) = MGET(path, n, d) * exp(exprExp);
+			if (d < sizeStocks) {
+				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp);
+			}else{
+				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp) * exp(parameters->r_->integrateRate(0, pasTemps*(n+1), devise));
+			}
 		}
 	}
 }
+
+
+
 
 // Simulation d'un marché avec un past à partir de t entre 0 et T
 // pnl == true -> nbHedgingDate
@@ -153,25 +198,27 @@ void BlackScholesModel::simulMarket(PnlMat *path, double t, const PnlMat *past, 
 		ndDates = nbTimeSteps_;
 	}
 
-	double pasTemps = maturity_ / ndDates;
-	int debutSimulation = past->m - 1;
-	int estDateConstatation = t - pasTemps*(debutSimulation);
-	if (estDateConstatation != 0) {
-		debutSimulation--;
-	}
 
+	double LG;
+	PnlVect Ldt;
+	double volatilite;
+	int sizeStocks = parameters->mapDevises.size();
+	int devise;
+	double r;
 	pnl_mat_set_subblock(path, past, 0, 0);
 	double u;
 	double sTilde;
 	double sSimul;
 	double st;
-
-	double LG;
-	PnlVect Ldt;
-
+	double pasTemps = maturity_ / ndDates;
 	bool prem = true;
-	double volatilite;
 	double t1, t2;
+
+	int debutSimulation = past->m - 1;
+	int estDateConstatation = t - pasTemps*(debutSimulation);
+	if (estDateConstatation != 0) {
+		debutSimulation--;
+	}
 
 	for (int n = debutSimulation; n < ndDates; n++) {
 		pnl_vect_rng_normal(parameters->Gn, parameters->size_, rng_);
@@ -183,7 +230,19 @@ void BlackScholesModel::simulMarket(PnlMat *path, double t, const PnlMat *past, 
 			st = MGET(past, (past->m - 1), d);
 			volatilite = GET(parameters->sigma_, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
-			
+			volatilite = 0;
+			// on regarde si action ou devise
+			if (d < sizeStocks) {
+				//On regarde la vol étrangère
+				devise = parameters->mapDevises[d]; 
+				if(devise != 0) {
+					volatilite = GET(parameters->sigma_, (sizeStocks - 1 + devise));
+				}
+				volatilite += GET(parameters->sigma_, d) ;
+			}else{
+				volatilite = GET(parameters->sigma_, d);
+				r -= parameters->r_->getRate(d - sizeStocks); 
+			}
 			sTilde = exp((GET(parameters->mu_, d) - volatilite * volatilite / 2.0)*u + volatilite * sqrt(u) * LG);
 			if (prem) {
 				sSimul = st * sTilde;
@@ -192,7 +251,11 @@ void BlackScholesModel::simulMarket(PnlMat *path, double t, const PnlMat *past, 
 			else {
 				sSimul = MGET(path, n, d) * sTilde;
 			}
-			MLET(path, n + 1, d) = sSimul;
+			if (d < sizeStocks) {
+				MLET(path, n+1, d) = sSimul;
+			}else{
+				MLET(path, n+1, d) = sSimul * exp(parameters->r_->integrateRate(0, t + u + u*(n-debutSimulation), devise));
+			}
 		}
 	}
 
@@ -205,7 +268,8 @@ void BlackScholesModel::simulMarket(PnlMat *path, double t, PnlRng* rng_) {
 	PnlVect Ldt;
 	double exprExp;
 	double volatilite;
-
+	int sizeStocks = parameters->mapDevises.size();
+	int devise;
 	pnl_mat_set_row(path, parameters->spot_, 0);
 
 	int cutDate = floor(t) + 1;
@@ -217,20 +281,51 @@ void BlackScholesModel::simulMarket(PnlMat *path, double t, PnlRng* rng_) {
 		for (int d = 0; d < parameters->size_; d++) {
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
-			volatilite = GET(parameters->sigma_, d);
+			volatilite = 0;
+			// on regarde si action ou devise
+			if (d < sizeStocks) {
+				//On regarde la vol étrangère
+				devise = parameters->mapDevises[d]; 
+				if(devise != 0) {
+					volatilite = GET(parameters->sigma_, (sizeStocks - 1 + devise));
+				}
+				volatilite += GET(parameters->sigma_, d) ;
+			}else{
+				volatilite = GET(parameters->sigma_, d);
+			}
 			exprExp = (GET(parameters->mu_, d) - (volatilite * volatilite / 2.0)) * pasTemps + volatilite * sqrt(pasTemps) * LG;
-			MLET(path, n + 1, d) = MGET(path, n, d) * exp(exprExp);
+			if (d < sizeStocks) {
+				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp);
+			}else{
+				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp) * exp(parameters->r_->integrateRate(0, pasTemps*(n+1), devise));
+			}
 		}
 	}
+
 
 	if (reste != 0) {
 		pnl_vect_rng_normal(parameters->Gn, parameters->size_, rng_);
 		for (int d = 0; d < parameters->size_; d++) {
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
-			volatilite = GET(parameters->sigma_, d);
+			volatilite = 0;
+			// on regarde si action ou devise
+			if (d < sizeStocks) {
+				//On regarde la vol étrangère
+				devise = parameters->mapDevises[d]; 
+				if(devise != 0) {
+					volatilite = GET(parameters->sigma_, (sizeStocks - 1 + devise));
+				}
+				volatilite += GET(parameters->sigma_, d) ;
+			}else{
+				volatilite = GET(parameters->sigma_, d);
+			}
 			exprExp = (GET(parameters->mu_, d) - (volatilite * volatilite / 2.0)) * reste*pasTemps + volatilite * sqrt(reste*pasTemps) * LG;
-			MLET(path, cutDate, d) = MGET(path, cutDate - 1, d) * exp(exprExp);
+			if (d < sizeStocks) {
+				MLET(path, cutDate, d) = MGET(path, cutDate - 1, d) * exp(exprExp);
+			}else{
+				MLET(path,cutDate , d) = MGET(path, cutDate -1 , d) * exp(exprExp) * exp(parameters->r_->integrateRate(0, t, devise));
+			}
 		}
 	}
 

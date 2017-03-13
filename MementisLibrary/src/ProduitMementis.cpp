@@ -38,9 +38,7 @@ double ProduitMementis::payoff(const PnlMat *path){
 	for (int i = 0 ; i<= this->nbConstationDates; i++){
 		flowCalculator->performanceInTheYear(i, path, nbAssets_, PerformanceVect, this->mapDevises, interestRate_);
 	}
-	/*std::cout << "*****************" << std::endl;
-	pnl_mat_print(path);*/
-	//std::cout << "-------" << std::endl;
+
 	double entryPerformance = flowCalculator->performanceAtEntryPoint(path, nbAssets_, PerformanceVect);
 	for (int i = 0; i <= this->nbConstationDates; i++){
 		flowCalculator->performanceComparedToEntryPoint(i, path, nbAssets_, PerfomanceComparedtoEntryPoint, entryPerformance);

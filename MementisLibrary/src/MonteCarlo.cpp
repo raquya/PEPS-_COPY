@@ -109,26 +109,26 @@ void MonteCarlo::affichagePrice(double currentDate, double &prix, double &icPrix
 
 
 void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta) {
-      double M = (double)nbSamples_;
-      //RateModel * interet = mod_->parameters->r_ ;
-      double maturite = pdt_->T_;
-      double facteurExp;
+    double M = (double)nbSamples_;
+    //RateModel * interet = mod_->parameters->r_ ;
+    double maturite = pdt_->T_;
+    double facteurExp;
 
-      double expo = exp(-mod_->parameters->r_->integrateRate(t,maturite));
+    double expo = exp(-mod_->parameters->r_->integrateRate(t,maturite));
 
-      // On crée les vecteurs qui vont contenir Le payoff+ et le payoff-
-      PnlMat *shift_path_up = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
-      PnlMat *shift_path_down = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
-      PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
+    // On crée les vecteurs qui vont contenir Le payoff+ et le payoff-
+    PnlMat *shift_path_up = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
+    PnlMat *shift_path_down = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
+    PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
 
-      double sommeDiffPayOff = 0;
+    double sommeDiffPayOff = 0;
 
-      // On fait le calcul M fois (MonteCarlo)
-      for(int i=0; i < M; i++) {
-          // On simule le path
-          mod_->asset(path, t, past, rng_);
-          // Pour chaque asset on fait le calcul correspondant
-          for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
+    // On fait le calcul M fois (MonteCarlo)
+    for(int i=0; i < M; i++) {
+        // On simule le path
+        mod_->asset(path, t, past, rng_);
+        // Pour chaque asset on fait le calcul correspondant
+        for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
             // On fait le shift avec fdStep
             mod_->shiftAsset(shift_path_up, path, idAsset, fdStep_, t , (maturite / (double)pdt_->nbTimeSteps_));
             // On fait le shift avec -fdStep
@@ -137,20 +137,21 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta) {
             sommeDiffPayOff = pdt_->payoff(shift_path_up) - pdt_->payoff(shift_path_down);
             // On met le resultat dans le vecteur delta
             LET(delta,idAsset) = GET(delta,idAsset) + sommeDiffPayOff;
-          }
-      }
+        }
+    }
 
-      // On reparcourt le vecteur delta pour faire la moyenne et multiplier par le facteur correspondant
-      for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
-          double st = pnl_mat_get(past, (past->m - 1), idAsset);
-          facteurExp = expo/(M*2*st*fdStep_);
-          LET(delta,idAsset) = GET(delta,idAsset)*facteurExp;
-      }
+    // On reparcourt le vecteur delta pour faire la moyenne et multiplier par le facteur correspondant
+    for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
+        double st = pnl_mat_get(past, (past->m - 1), idAsset);
+        facteurExp = expo/(M*2*st*fdStep_);
+        LET(delta,idAsset) = GET(delta,idAsset)*facteurExp;
 
-      pnl_mat_free(&shift_path_up);
-      pnl_mat_free(&shift_path_down);
-      pnl_mat_free(&path);
-      //delete interet;
+    }
+
+    pnl_mat_free(&shift_path_up);
+    pnl_mat_free(&shift_path_down);
+    pnl_mat_free(&path);
+    //delete interet;
 }
 
 
@@ -176,6 +177,8 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta, PnlVect *ic
         PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ +1, mod_->parameters->size_);
         double sommeDiffPayOff = 0;
         PnlVect *sommeDiffPayOffSquared = pnl_vect_create_from_zero(mod_->parameters->size_);
+        PnlVect *Up = pnl_vect_create(path->m);
+        PnlVect *Down = pnl_vect_create(path->m);
         // On fait le calcul M fois (MonteCarlo)
         for(int i=0; i < M; i++) {
             // On simule le path
@@ -189,7 +192,6 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta, PnlVect *ic
                 sommeDiffPayOff = pdt_->payoff(shift_path_up) - pdt_->payoff(shift_path_down);
                 // On met le resultat dans le vecteur delta
                 LET(delta,idAsset) = GET(delta,idAsset) + sommeDiffPayOff;
-
                 // On met le calcul du resultat au carree dans le vecteur ic (pour les ICs)
                 LET(sommeDiffPayOffSquared,idAsset) = GET(sommeDiffPayOffSquared,idAsset) + sommeDiffPayOff*sommeDiffPayOff;
             }
@@ -202,7 +204,6 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta, PnlVect *ic
             double carreDeux = GET(delta,idAsset);
             LET(delta,idAsset) = GET(delta,idAsset)*expo*factor/M;
             LET(ic,idAsset) = expo*factor*sqrt((carreUn/M - (carreDeux*carreDeux)/(M*M))/M)*1.96;
-
         }
         pnl_mat_free(&shift_path_up);
         pnl_mat_free(&shift_path_down);
