@@ -16,7 +16,7 @@ public:
 	FlowCalculator(double VLO);
 	~FlowCalculator();
 
-	void performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,int> mapDevise, RateModel* interest);
+	void performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,double> mapDevise, RateModel* interest);
 
 	double performanceAtEntryPoint(const PnlMat * path, int size, PnlVect* performanceVect);
 

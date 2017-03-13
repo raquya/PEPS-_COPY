@@ -4,13 +4,14 @@
 #include "pnl/pnl_matrix.h"
 #include "RateModel.hpp"
 #include <map>
+#include <iostream>
 
 /// \brief Modèle de Black Scholes
 class ConstantRateModel: public RateModel
 {
 public:
 
-	std::map<int,int> mapRateDevises;
+	std::map<int,double> mapRateDevises;
 	/*!
 	* \brief Constructeur par défaut
 	*/
@@ -26,8 +27,8 @@ public:
 	*/
 	virtual ~ConstantRateModel();
 
-	double getRate(double t);
+	double getRate(int t);
 
-	double integrateRate(double t1, double t2, double indice = 3);
+	double integrateRate(double t1, double t2, int indice = 3);
 
 };

@@ -1,8 +1,8 @@
-# Install script for directory: /user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary
+# Install script for directory: /user/1/herbeauc/Bureau/PEPS-_COPY/MementisLibrary
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build")
+  set(CMAKE_INSTALL_PREFIX "/user/1/herbeauc/Bureau/PEPS-_COPY/MementisLibrary/build")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/user/2/.base/raquya/home/Troisieme_Annee/S5/PEPS/Mementis (copy)/MementisLibrary/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/user/1/herbeauc/Bureau/PEPS-_COPY/MementisLibrary/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

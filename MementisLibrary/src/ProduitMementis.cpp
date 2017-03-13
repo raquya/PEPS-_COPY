@@ -12,7 +12,7 @@ ProduitMementis::~ProduitMementis()
 {
 }
 
-ProduitMementis::ProduitMementis(FlowCalculator* flow, double maturity, int nbTimeSteps_, int nbAsset_, int nbConstationDates, RateModel* interest, std::map<int,int> mapDevises) {
+ProduitMementis::ProduitMementis(FlowCalculator* flow, double maturity, int nbTimeSteps_, int nbAsset_, int nbConstationDates, RateModel* interest, std::map<int,double> mapDevises) {
 	this->flowCalculator = flow;
 	this->T_ = maturity;
 	this->nbTimeSteps_= nbTimeSteps_;
@@ -26,7 +26,6 @@ ProduitMementis::ProduitMementis(FlowCalculator* flow, double maturity, int nbTi
 
 // On actualise les différents flux de dividende à la date de maturité
 double ProduitMementis::payoff(const PnlMat *path){
-	//
 	double payOff = 0;
 	double temp;
 	double vlo = flowCalculator->VLO;
@@ -39,9 +38,10 @@ double ProduitMementis::payoff(const PnlMat *path){
 	for (int i = 0 ; i<= this->nbConstationDates; i++){
 		flowCalculator->performanceInTheYear(i, path, nbAssets_, PerformanceVect, this->mapDevises, interestRate_);
 	}
-
+	/*std::cout << "*****************" << std::endl;
+	pnl_mat_print(path);*/
+	//std::cout << "-------" << std::endl;
 	double entryPerformance = flowCalculator->performanceAtEntryPoint(path, nbAssets_, PerformanceVect);
-
 	for (int i = 0; i <= this->nbConstationDates; i++){
 		flowCalculator->performanceComparedToEntryPoint(i, path, nbAssets_, PerfomanceComparedtoEntryPoint, entryPerformance);
 		flowCalculator->dividende(i, path, nbAssets_, vectDividende, PerfomanceComparedtoEntryPoint);

@@ -30,13 +30,14 @@ MonteCarlo::MonteCarlo(BlackScholesModel *bsModel, Produit* produit, PnlRng* pnl
 void MonteCarlo::price(double &prix, double &ic) {
     //RateModel* interet = mod_->parameters->r_;
     double maturite = pdt_->T_;
-    double termeExp = exp(-mod_->parameters->r_->integrateRate(0,maturite));
+    double termeExp = exp(-mod_->parameters->r_->integrateRate(0,maturite,3));
     double sommePayOff = 0;
     double sommePayOffCarre = 0;
     PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ + 1, mod_->parameters->size_);
     // Application de Montecarlo
     for (int i = 0; i< nbSamples_; i++) {
         mod_->asset(path, rng_);
+
         double res =  pdt_->payoff(path);
         // on somme les payoffs pour faire la moyenne
         sommePayOff += res;
@@ -126,9 +127,6 @@ void MonteCarlo::delta(const PnlMat *past, double t, PnlVect *delta) {
       for(int i=0; i < M; i++) {
           // On simule le path
           mod_->asset(path, t, past, rng_);
-          for (int j = mod_->parameters->mapDevises.size() ; j < mod_->parameters->size_; j++){
-            
-          }
           // Pour chaque asset on fait le calcul correspondant
           for (int idAsset=0; idAsset < mod_->parameters->size_; idAsset++) {
             // On fait le shift avec fdStep
@@ -228,7 +226,7 @@ void MonteCarlo::affichageDelta(PnlVect *delta, PnlVect *icDelta) {
 void MonteCarlo::profitAndLoss(PnlVect *V, double &PnL, PnlVect *prixPdt) {
     PnlMat *marketPath = pnl_mat_create(mod_->parameters->hedgingDateNb_ + 1, mod_->parameters->size_);
     mod_->simulMarket(marketPath, rng_, true);
-    profitAndLoss(0, V, NULL, PnL, prixPdt, marketPath);
+    profitAndLoss(0, NULL, V, PnL, prixPdt, marketPath);
 }
 
 
@@ -267,6 +265,7 @@ void MonteCarlo::profitAndLoss(double currentDate, PnlVect *currentDateSpot, Pnl
     double prixPrec;
     price(past, currentDate, prixPrec);
     delta(past, currentDate, deltaPrec);
+
     if(currentDateCut == nbDatePast) {
         prix = prixPrec;
     } else {
@@ -276,11 +275,14 @@ void MonteCarlo::profitAndLoss(double currentDate, PnlVect *currentDateSpot, Pnl
         price(pastFirstStep, currentDate, prix);
         delta(pastFirstStep, currentDate, deltaPrec);
         pnl_mat_free(&pastFirstStep);
-    }
+    }    
 
-    double valeurPrec = prixPrec - pnl_vect_scalar_prod(deltaPrec,Stauxi);
+    double valeurPrec = prixPrec - pnl_vect_scalar_prod(deltaPrec,Stauxi);  
+
     double valPortefeuilleCouverture = prix;
+    pnl_vect_print(V);
     LET(V,0) = valPortefeuilleCouverture;
+
     LET(prixPdt,0) =  prix;
     int cptHedge = 1;
 

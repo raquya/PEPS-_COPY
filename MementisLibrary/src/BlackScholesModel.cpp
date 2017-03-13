@@ -52,12 +52,11 @@ void BlackScholesModel::asset(PnlMat *path, PnlRng* rng_) {
 				volatilite = GET(parameters->sigma_, d);
 				r -= parameters->r_->getRate(d - sizeStocks); 
 			}
-
 			exprExp = (r - (volatilite * volatilite / 2.0)) * pasTemps + volatilite * sqrt(pasTemps) * LG;
 			if (d < sizeStocks) {
 				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp);
 			}else{
-				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp) * parameters->r_->integrateRate(0, pasTemps*(n+1), devise);
+				MLET(path, n+1, d) = MGET(path, n, d) * exp(exprExp) * exp(parameters->r_->integrateRate(0, pasTemps*(n+1), devise));
 			}
 		}
 	}
@@ -77,7 +76,7 @@ void BlackScholesModel::asset(PnlMat *path, double t, const PnlMat *past, PnlRng
 	double sTilde;
 	double sSimul;
 	double st;
-	double r = parameters->r_->getRate(0);
+	double r;
 
 	double LG;
 	PnlVect Ldt;
@@ -92,6 +91,7 @@ void BlackScholesModel::asset(PnlMat *path, double t, const PnlMat *past, PnlRng
 		t2 = (maturity_ /(double)nbTimeSteps_)*(n+1);
 		u = t2 - t1;
 		for (int d = 0; d < parameters->size_; d++) {
+			r = parameters->r_->getRate(3)
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
 			st = MGET(past, (past->m - 1), d);
 			volatilite = GET(parameters->sigma_, d);

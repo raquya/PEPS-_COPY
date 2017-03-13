@@ -136,7 +136,7 @@ void Utils::sigma(PnlVect *sigma) {
 }
 
 
-void Utils::mapsDevises(std::map<int,int>& devises) {
+void Utils::mapsDevises(std::map<int,double>& devises) {
     double JPY = 3;
     double GBP = 2;
     double USD = 1;

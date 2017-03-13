@@ -28,7 +28,7 @@ int main(int argc, char **argv)
     size_t sample;
     double vlo = 100;
 
-    map<int,int> mapDevises;
+    map<int,double> mapDevises;
     Utils::mapsDevises(mapDevises);
 
     
@@ -105,21 +105,22 @@ int main(int argc, char **argv)
     PnlMat* matCorr = pnl_mat_create(size + nbDevises, size + nbDevises);
 
     if(type == "mementis") {
-        PnlMat* matCorr = pnl_mat_create(size + nbDevises, size + nbDevises);
         flow = new FlowCalculator(vlo);
         produit = new ProduitMementis(flow, maturity, timeStepsNb, size, timeStepsNb, interest_, mapDevises);
         Utils::matriceCorrelation(matCorr, rng, size + nbDevises);
+
         mu = pnl_vect_create(size + nbDevises);
         Utils::mu(mu);
         sigma = pnl_vect_create(size + nbDevises);
         Utils::sigma(sigma);
-        for (int i =0; i< (size+ nbDevises); i++) {
+        pnl_vect_resize(spot,(size + nbDevises));
+        for (int i =0; i< (size + nbDevises); i++) {
             if (i <size){
                 pnl_vect_set(spot, i, pnl_rng_uni_ab(80,120,rng));
             }else if (i == size){
                 pnl_vect_set(spot, i, 0.943);
             }else if (i == size +1){
-                pnl_vect_set(spot, i, 1.1505);
+                pnl_vect_set(spot, i, 1.1460);
             }else{
                 pnl_vect_set(spot, i, 0.0082);
             }

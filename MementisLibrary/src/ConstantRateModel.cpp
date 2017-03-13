@@ -1,15 +1,10 @@
 #include "ConstantRateModel.hpp"
 
 ConstantRateModel::ConstantRateModel(){
-	std::map<int,int> mapRateDevises;
-	/*constantRateEuro = 0.042;
-	constantRateUSD = 0.025;
-	constantRateGBP = 0.041;
-	contantRateJPY = 0.02;*/
-	mapRateDevises[3] = 0.042;
-	mapRateDevises[0] = 0.025;
-	mapRateDevises[1] = 0.041;
-	mapRateDevises[2] = 0.020;
+	this->mapRateDevises[3] = 0.042;
+	this->mapRateDevises[0] = 0.025;
+	this->mapRateDevises[1] = 0.041;
+	this->mapRateDevises[2] = 0.020;
 }
 
 
@@ -21,11 +16,11 @@ ConstantRateModel::~ConstantRateModel(){
 
 }
 
-double ConstantRateModel::getRate(double t){
+double ConstantRateModel::getRate(int t){
 	return mapRateDevises[t];
 }
 
 
-double ConstantRateModel::integrateRate(double t1, double t2, double indice){
+double ConstantRateModel::integrateRate(double t1, double t2, int indice){
 	return (mapRateDevises[indice]*(t2-t1));
 }

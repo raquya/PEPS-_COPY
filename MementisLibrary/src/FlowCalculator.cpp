@@ -18,32 +18,37 @@ FlowCalculator::~FlowCalculator()
 }
 
 
-void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,int> mapDevise, RateModel* interest)
+void FlowCalculator::performanceInTheYear(int i, const PnlMat * path, int size, PnlVect* PerformanceVect, std::map<int,double> mapDevise, RateModel* interest)
 {
 	double sum = 0;
 	int indiceDevise ;
 	//double valRef = 0;
 
-	PnlVect V;
-	PnlVect W;
+	PnlVect *V = pnl_vect_create(path->m);
+	PnlVect *W = pnl_vect_create(path->m);
 
 	if (i == 0) {
 		pnl_vect_set(PerformanceVect, 0 , 1);
 	}else{
-		V = pnl_vect_wrap_mat_row(path, i);
-		W = pnl_vect_wrap_mat_row(path, 0);
-		pnl_vect_div_vect_term(&V, &W);
+		pnl_mat_get_row(V, path, i);
+		pnl_mat_get_row(W, path, 0);
+		pnl_vect_div_vect_term(V, W);
 		for (int j =0 ; j< size ; j++) {
 			indiceDevise = mapDevise[j];
 			if (indiceDevise != 3){
-				sum += GET(&V,j)/GET(&V, size + indiceDevise)*exp(interest->integrateRate(0, i, indiceDevise));
+
+				sum += GET(V,j)/GET(V, size + indiceDevise)*exp(interest->integrateRate(0, i, indiceDevise));
 			}else{
-				sum += GET(&V,j);
+				sum += GET(V,j);
 			}
 		}
 		//sum = pnl_vect_sum(&V);
+		//std::cout << sum/size << std::endl;
 		pnl_vect_set(PerformanceVect, i , sum/size);
 	}
+
+	pnl_vect_free(&V);
+	pnl_vect_free(&W);
 }
 
 
@@ -67,16 +72,14 @@ void FlowCalculator::performanceComparedToEntryPoint(int i, const PnlMat * path,
 	double perf = 0;
 	//double valRef = 0;
 
-	PnlVect V;
-	PnlVect W;
-	PnlVect Z;
+	PnlVect *V = pnl_vect_create(path->m);
+	PnlVect *W = pnl_vect_create(path->m);
 
-	V = pnl_vect_wrap_mat_row(path, i);
-	W = pnl_vect_wrap_mat_row(path, 0);
-	Z = pnl_vect_wrap_mat_row(path, 0);
-	pnl_vect_mult_scalar(&W,entryPerformance);
-	pnl_vect_minus_vect (&V, &W);
-	pnl_vect_div_vect_term(&V, &W);
+	pnl_mat_get_row(V, path, i);
+	pnl_mat_get_row(W, path, 0);
+	pnl_vect_mult_scalar(W,entryPerformance);
+	pnl_vect_minus_vect (V, W);
+	pnl_vect_div_vect_term(V, W);
 
 	//Limiter les coefficients de V à 0.1
 
@@ -86,13 +89,15 @@ void FlowCalculator::performanceComparedToEntryPoint(int i, const PnlMat * path,
 	for (int k = 0; k < size; k++) {
 		//valRef = MGET(path, 0, k);
 		//perf = (MGET(path, i, k) - valRef*entryPerformance) / valRef;
-		perf = pnl_vect_get(&V, k);
+		perf = pnl_vect_get(V, k);
 		if (perf >= 0.1){
 			perf = 0.1;
 		}
 		result += perf;
 	}
 	pnl_vect_set(performanceComparedAtEntryPoint, i, result / size);
+	pnl_vect_free(&V);
+	pnl_vect_free(&W);
 }
 
 
