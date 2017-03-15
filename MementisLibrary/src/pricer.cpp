@@ -29,9 +29,8 @@ int main(int argc, char **argv)
     double vlo = 100;
 
     map<int,double> mapDevises;
-    Utils::mapsDevises(mapDevises);
 
-    
+
     int argFileNb;
 
     if(argc == 2) {
@@ -54,7 +53,7 @@ int main(int argc, char **argv)
 
 
     Param *P = new Parser(infile);
-    int nbDevises = 3;
+    int nbDevises;
     // Extraction des parametres avec le parser
     P->extract("option size", size);
     P->extract("spot", spot, size);
@@ -70,11 +69,15 @@ int main(int argc, char **argv)
     P->extract("hedging dates number", hedgingDateNumber);
     P->extract("fd step", steps);
     P->extract("sample number", sample);
+    P->extract("nbDevise", nbDevises);
     if (P->extract("dividend rate", divid, size) == false)
     {
         divid = pnl_vect_create_from_zero(size);
     }
-    // Gestion des cas interdits
+
+    Utils::mapsDevises(mapDevises, type, size);
+
+    // Gestion des cas interdits    
     if (maturity < 0 ) {
         std::cerr << "La date de maturité est négative" << std::endl;
         return 1;
@@ -101,10 +104,11 @@ int main(int argc, char **argv)
     PnlMat *past = pnl_mat_create(1,size + nbDevises);
     Produit *produit;
     FlowCalculator * flow = NULL;
-    RateModel* interest_ = new ConstantRateModel();
+    RateModel* interest_;
     PnlMat* matCorr = pnl_mat_create(size + nbDevises, size + nbDevises);
 
     if(type == "mementis") {
+        interest_ = new ConstantRateModel();
         flow = new FlowCalculator(vlo);
         produit = new ProduitMementis(flow, maturity, timeStepsNb, size, timeStepsNb, interest_, mapDevises);
         Utils::matriceCorrelation(matCorr, rng, size + nbDevises);
@@ -126,7 +130,9 @@ int main(int argc, char **argv)
             }
         }
     } else if (type == "basket") {
-        PnlMat* matCorr = pnl_mat_create(size,size);
+        interest_ = new ConstantRateModel(interest);
+        
+        matCorr = pnl_mat_create(size,size);
         produit = new BasketOption(maturity, timeStepsNb, size, strike , payoffCoeff, interest_);
         for(int i = 0; i < size; i++) {
             for(int j = i; j < size; j++) {
@@ -141,7 +147,8 @@ int main(int argc, char **argv)
         mu = pnl_vect_create_from_scalar(size, 0.05 );
         sigma = pnl_vect_create_from_scalar(size,0.2);
     } else if(type == "asian") {
-        PnlMat* matCorr = pnl_mat_create(size,size);
+        interest_ = new ConstantRateModel(interest);
+        matCorr = pnl_mat_create(size,size);
         produit = new AsianOption(maturity, timeStepsNb, size, strike, payoffCoeff, interest_);
         for(int i = 0; i < size; i++) {
             for(int j = i; j < size; j++) {

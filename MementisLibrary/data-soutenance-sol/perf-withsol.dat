@@ -18,3 +18,4 @@ spot <vector> 100
 timestep number <int> 520
 trend <vector> 0.1 
 volatility <vector> 0.2 
+nbDevise <int> 0

@@ -17,10 +17,9 @@ public:
 	*/
 	ConstantRateModel();
 
-	/*!
-	* \brief Constructeur
 
-	ConstantRateModel(double r);*/
+
+	ConstantRateModel(double r);
 
 	/*!
 	* \brief Destructeur

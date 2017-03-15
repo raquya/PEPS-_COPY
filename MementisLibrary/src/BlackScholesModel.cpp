@@ -35,10 +35,13 @@ void BlackScholesModel::asset(PnlMat *path, PnlRng* rng_) {
 	
 	for (int n = 0; n < nbTimeSteps_; n++) {
 		pnl_vect_rng_normal(parameters->Gn, parameters->size_, rng_);
+
 		for (int d = 0; d < parameters->size_; d++) {
 			r = parameters->r_->getRate(3);
 			Ldt = pnl_vect_wrap_mat_row(parameters->CorrelationMat, d);
 			LG = pnl_vect_scalar_prod(&Ldt, parameters->Gn);
+				//// ERREUR CORRELATION MATRIX
+				
 			volatilite = 0;
 			// on regarde si action ou devise
 			if (d < sizeStocks) {
@@ -47,7 +50,7 @@ void BlackScholesModel::asset(PnlMat *path, PnlRng* rng_) {
 				if(devise != 0) {
 					volatilite = GET(parameters->sigma_, (sizeStocks - 1 + devise));
 				}
-				volatilite += GET(parameters->sigma_, d) ;
+				volatilite += GET(parameters->sigma_, d);
 			}else{
 				volatilite = GET(parameters->sigma_, d);
 				r -= parameters->r_->getRate(d - sizeStocks); 

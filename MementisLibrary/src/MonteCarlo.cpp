@@ -30,7 +30,7 @@ MonteCarlo::MonteCarlo(BlackScholesModel *bsModel, Produit* produit, PnlRng* pnl
 void MonteCarlo::price(double &prix, double &ic) {
     //RateModel* interet = mod_->parameters->r_;
     double maturite = pdt_->T_;
-    double termeExp = exp(-mod_->parameters->r_->integrateRate(0,maturite,3));
+    double termeExp = exp(-mod_->parameters->r_->integrateRate(0,maturite));
     double sommePayOff = 0;
     double sommePayOffCarre = 0;
     PnlMat *path = pnl_mat_create(pdt_->nbTimeSteps_ + 1, mod_->parameters->size_);
@@ -264,6 +264,7 @@ void MonteCarlo::profitAndLoss(double currentDate, PnlVect *currentDateSpot, Pnl
     pnl_mat_get_row(Stauxi, past, (past->m - 1));
 
     double prixPrec;
+
     price(past, currentDate, prixPrec);
     delta(past, currentDate, deltaPrec);
 

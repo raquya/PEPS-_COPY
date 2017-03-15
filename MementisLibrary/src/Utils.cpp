@@ -1,4 +1,5 @@
 #include "Utils.hpp"
+#include <iostream>
 
 void Utils::matriceCorrelation(PnlMat* matCorr, PnlRng* rng, double nbActions) {
     double tirage;
@@ -136,34 +137,41 @@ void Utils::sigma(PnlVect *sigma) {
 }
 
 
-void Utils::mapsDevises(std::map<int,double>& devises) {
-    double JPY = 3;
+void Utils::mapsDevises(std::map<int,double>& devises, std::string type, int size) {
+    double JPY = 3;     
     double GBP = 2;
     double USD = 1;
     double EUR = 0;
-    devises[0] =  JPY;
-    devises[1] =  JPY;
-    devises[2] =  JPY;
-    devises[3] =  JPY;
-    devises[4] =  JPY;
-    devises[5] =  USD;
-    devises[6] =  GBP;
-    devises[7] =  GBP;
-    devises[8] =  EUR;
-    devises[9] =  EUR;
-    devises[10] =  EUR;
-    devises[11] =  EUR;
-    devises[12] =  EUR;
-    devises[13] =  EUR;
-    devises[14] =  EUR;
-    devises[15] =  EUR;
-    devises[16] =  EUR;
-    devises[17] =  USD;
-    devises[18] =  GBP;
-    devises[19] =  EUR;
-    devises[20] =  EUR;
-    devises[21] =  EUR;
-    devises[22] =  EUR;
-    devises[23] =  EUR;
-    devises[24] =  USD;
+    if (type == "mementis"){
+        devises[0] =  JPY;
+        devises[1] =  JPY;
+        devises[2] =  JPY;
+        devises[3] =  JPY;
+        devises[4] =  JPY;
+        devises[5] =  USD;
+        devises[6] =  GBP;
+        devises[7] =  GBP;
+        devises[8] =  EUR;
+        devises[9] =  EUR;
+        devises[10] =  EUR;
+        devises[11] =  EUR;
+        devises[12] =  EUR;
+        devises[13] =  EUR;
+        devises[14] =  EUR;
+        devises[15] =  EUR;
+        devises[16] =  EUR;
+        devises[17] =  USD;
+        devises[18] =  GBP;
+        devises[19] =  EUR;
+        devises[20] =  EUR;
+        devises[21] =  EUR;
+        devises[22] =  EUR;
+        devises[23] =  EUR;
+        devises[24] =  USD;
+    }else{
+        for (int i =0; i< size; i++){
+            devises[i] = EUR;
+        }
+
+    }
 }

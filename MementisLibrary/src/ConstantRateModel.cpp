@@ -8,8 +8,14 @@ ConstantRateModel::ConstantRateModel(){
 }
 
 
-/*ConstantRateModel::ConstantRateModel(double r){
-}*/
+
+
+ConstantRateModel::ConstantRateModel(double r){
+	this->mapRateDevises[3] = r;
+	this->mapRateDevises[0] = 0.025;
+	this->mapRateDevises[1] = 0.041;
+	this->mapRateDevises[2] = 0.020;
+}
 
 
 ConstantRateModel::~ConstantRateModel(){

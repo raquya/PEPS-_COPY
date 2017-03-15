@@ -13,9 +13,10 @@ model type <string> bs
 option size <int> 1
 option type <string> basket
 payoff coefficients <vector> 1 
-sample number <long> 50000
+sample number <long> 60000
 spot <vector> 100 
 strike <float> 100
 TimeStep number <int> 1
 trend <vector> 0.05 
 volatility <vector> 0.2 
+nbDevise <int> 0
