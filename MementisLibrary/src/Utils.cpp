@@ -78,61 +78,61 @@ void Utils::mu(PnlVect *mu) {
 
 void Utils::sigma(PnlVect *sigma) {
     //TOKYO GAS
-    LET(sigma,0) = 0.10;
+    LET(sigma,0) = 0.2410;
     //KIRIN BREWERY
-    LET(sigma,1) = 0.095;
+    LET(sigma,1) = 0.24095;
     //TOYOTA
-    LET(sigma,2) = 0.065;
+    LET(sigma,2) = 0.24065;
     //NINTENDO
-    LET(sigma,3) = 0.105;
+    LET(sigma,3) = 0.24105;
     //TOKYO ELECTRIC
-    LET(sigma,4) = 0.091;
+    LET(sigma,4) = 0.237091;
     //APPLE
-    LET(sigma,5) = 0.110;
+    LET(sigma,5) = 0.239110;
     //ALTADIS
-    LET(sigma,6) = 0.068;
+    LET(sigma,6) = 0.23968;
     //ASTRA
-    LET(sigma,7) = 0.087;
+    LET(sigma,7) = 0.24087;
     //CA
-    LET(sigma,8) = 0.102;
+    LET(sigma,8) = 0.239102;
     //CASINO
-    LET(sigma,9) = 0.104;
+    LET(sigma,9) = 0.24104;
     //DEUTSCHE TELEKOM
-    LET(sigma,10) = 0.074;
+    LET(sigma,10) = 0.24074;
     //EUROPEAN
-    LET(sigma,11) = 0.054;
+    LET(sigma,11) = 0.24054;
     //ENI SPA
-    LET(sigma,12) = 0.063;
+    LET(sigma,12) = 0.24063;
     //FRANCE TELECOM
-    LET(sigma,13) = 0.12;
+    LET(sigma,13) = 0.2412;
     //GAS NATURAL
-    LET(sigma,14) = 0.078;
+    LET(sigma,14) = 0.24078;
     //INTENSA
-    LET(sigma,15) = 0.092;
+    LET(sigma,15) = 0.24092;
     //MEDIASET SPA
-    LET(sigma,16) = 0.085;
+    LET(sigma,16) = 0.24085;
     //PFIZER
-    LET(sigma,17) = 0.108;
+    LET(sigma,17) = 0.24108;
     //RENTOKIL
-    LET(sigma,18) = 0.099;
+    LET(sigma,18) = 0.2399;
     //RWE
-    LET(sigma,19) = 0.111;
+    LET(sigma,19) = 0.24111;
     //VINCI
-    LET(sigma,20) = 0.088;
+    LET(sigma,20) = 0.2388;
     //STORA
-    LET(sigma,21) = 0.096;
+    LET(sigma,21) = 0.2396;
     //TUI
-    LET(sigma,22) = 0.086;
+    LET(sigma,22) = 0.2386;
     //VALEO SA
-    LET(sigma,23) = 0.084;
+    LET(sigma,23) = 0.2384;
     //VERIZON INC
-    LET(sigma,24) = 0.077;
+    LET(sigma,24) = 0.2377;
     //USD
-    LET(sigma,25) = 0.050;
+    LET(sigma,25) = 0.00850;
     //GBP
-    LET(sigma,26) = 0.045;
+    LET(sigma,26) = 0.00745;
     //JPY
-    LET(sigma,27) = 0.041; 
+    LET(sigma,27) = 0.008; 
 }
 
 

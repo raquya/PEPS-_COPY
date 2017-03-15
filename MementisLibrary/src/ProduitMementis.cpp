@@ -33,7 +33,8 @@ double ProduitMementis::payoff(const PnlMat *path){
 	PnlVect * PerformanceVect = pnl_vect_create_from_zero(this->nbConstationDates + 1);
 	PnlVect * PerfomanceComparedtoEntryPoint = pnl_vect_create_from_zero(this->nbConstationDates + 1);
 
-
+	//std::cout<< " -----------------------------------------------------" << std::endl;
+	//pnl_mat_print(path);
 	//double moyenne;
 	for (int i = 0 ; i<= this->nbConstationDates; i++){
 		flowCalculator->performanceInTheYear(i, path, nbAssets_, PerformanceVect, this->mapDevises, interestRate_);
